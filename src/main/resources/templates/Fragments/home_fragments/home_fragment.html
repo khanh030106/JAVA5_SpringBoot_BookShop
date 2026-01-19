@@ -1,0 +1,57 @@
+<div th:fragment="content">
+    <div class="title_and_filters d-flex justify-content-between align-items-center">
+        <div class="title">
+            <h3 th:text="${title}"></h3>
+            <small th:text="${subtitle}"></small>
+        </div>
+        <div class="filter" >
+            <form hx-get="/bookseller/home/morebook/filterbooks"
+                  hx-target="#products_area"
+                  hx-swap="innerHTML"
+                  hx-trigger="change"
+                  hx-push-url="true" id="filterForm"
+            >
+                <select name="price">
+                    <option value="">Lọc theo giá tiền</option>
+                    <option value="0-100000">0 - 100.000</option>
+                    <option value="100000-200000">100.000 - 200.000</option>
+                    <option value="200000+">Trên 200.000</option>
+                </select>
+                <select name="category">
+                    <option value="">Lọc theo loại sách</option>
+                    <option th:each="item : ${categories}" th:text="${item.categoryName}" th:value="${item.categoryName}"></option>
+                </select>
+                <select name="author">
+                    <option value="">Lọc theo tác giả</option>
+                    <option th:each="item : ${authors}" th:text="${item.authorName}" th:value="${item.authorName}"></option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="products_gird">
+        <div th:each="item : ${books}" class="products_card">
+            <div class="product-card">
+                <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="product-link"></a>
+                <div class="product-image">
+                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL}|}" alt="">
+                    <a href="benefit_fragment.html" class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </a>
+                </div>
+                <div class="product-body">
+                    <h6 class="product-title"
+                        th:text="${item.title != null && #strings.length(item.title) > 26 ? #strings.substring(item.title, 0, 22) + '...' : item.title}"></h6>
+                    <p class="product-price"
+                       th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')} + 'đ'">
+                    </p>
+                    <div class="product-meta">
+                        <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="buy_now">Mua ngay</a>
+                        <a href="index_fragment.html" class="add-cart">
+                            <i class="material-icons">add_shopping_cart</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

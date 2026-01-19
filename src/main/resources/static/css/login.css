@@ -1,0 +1,382 @@
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.bl-nav-links {
+    display: none;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+@media (min-width: 768px) {
+    .bl-nav-links {
+        display: flex;
+    }
+}
+
+.bl-nav-links a {
+    color: #181111;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.bl-nav-links a:hover {
+    color: #bc0c06;
+}
+
+.bl-signup-button {
+    display: flex;
+    min-width: 84px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    height: 40px;
+    padding: 0 1rem;
+    background-color: #bc0c06;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.bl-signup-button:hover {
+    background-color: #9a0a05;
+}
+
+.bl-signup-button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Main Content */
+.bl-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    width: 100%;
+}
+
+.bl-login-container {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    min-height: 600px;
+}
+
+/* Left Side - Image Panel */
+.bl-image-panel {
+    display: none;
+    width: 50%;
+    position: relative;
+    background-color: #f3f4f6;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .bl-image-panel {
+        display: flex;
+    }
+}
+
+.bl-background-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s;
+}
+
+.bl-image-panel:hover .bl-background-image {
+    transform: scale(1.05);
+}
+
+.bl-image-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2), transparent);
+}
+
+.bl-image-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+}
+
+.bl-image-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+}
+
+.bl-image-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Right Side - Form Panel */
+.bl-form-panel {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .bl-form-panel {
+        width: 50%;
+        padding: 3rem;
+    }
+}
+
+.bl-form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.bl-form-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.bl-form-subtitle {
+    color: #8c605f;
+    font-size: 0.875rem;
+    margin-top: -17px;
+}
+
+/* Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.bl-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bl-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    color: #181111;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.bl-forgot-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #bc0c06;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.bl-forgot-link:hover {
+    color: #9a0a05;
+}
+
+.bl-input-wrapper {
+    position: relative;
+}
+
+input[type="email"],
+input[type="password"] {
+    display: flex;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid #e6dbdb;
+    background-color: white;
+    color: #181111;
+    height: 48px;
+    padding: 0 1rem;
+    font-size: 1rem;
+    transition: all 0.2s;
+    font-family: 'Manrope', sans-serif;
+}
+
+input::placeholder {
+    color: rgba(140, 96, 95, 0.6);
+}
+
+input:focus {
+    outline: none;
+    border-color: #bc0c06;
+    box-shadow: 0 0 0 2px rgba(188, 12, 6, 0.2);
+}
+
+.bl-input-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c605f;
+    pointer-events: none;
+}
+
+.bl-input-icon .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.bl-password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c605f;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.bl-password-toggle:hover {
+    color: #bc0c06;
+}
+
+.bl-password-toggle .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* Submit Button */
+.bl-submit-button {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    height: 48px;
+    padding: 0 1rem;
+    background-color: #bc0c06;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(188, 12, 6, 0.2);
+}
+
+.bl-submit-button:hover {
+    background-color: #9a0a05;
+}
+
+.bl-submit-button:active {
+    transform: scale(0.98);
+}
+
+/* Divider */
+.bl-divider {
+    position: relative;
+    display: flex;
+    padding: 0.5rem 0;
+    align-items: center;
+}
+
+.bl-divider-line {
+    flex-grow: 1;
+    border-top: 1px solid #e6dbdb;
+}
+
+.bl-divider-text {
+    flex-shrink: 0;
+    margin: 0 1rem;
+    font-size: 0.75rem;
+    color: #8c605f;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* Social Login */
+.bl-social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.bl-social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e6dbdb;
+    background-color: white;
+    height: 44px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bl-social-button:hover {
+    background-color: #f9fafb;
+}
+
+.bl-social-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.bl-social-button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bl-social-button span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #181111;
+}
+
+/* Footer Link */
+.bl-footer-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.bl-footer-link p {
+    font-size: 0.875rem;
+    color: #8c605f;
+}
+
+.bl-footer-link a {
+    font-weight: 700;
+    color: #bc0c06;
+    text-decoration: none;
+    margin-left: 0.25rem;
+    transition: color 0.2s;
+}
+
+.bl-footer-link a:hover {
+    color: #9a0a05;
+}

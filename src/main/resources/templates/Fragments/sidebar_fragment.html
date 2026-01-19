@@ -1,0 +1,124 @@
+<div class="app-wrapper"  th:fragment="sidebar">
+    <div class="sidebar-container" id="menuCollapse">
+        <div class="sidebar-header">
+            <h1 class="sidebar-title">K BOOKs.</h1>
+            <button class="menu-button" id="close_button">
+                <span class="material-icons-outlined">close</span>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="nav-section">
+                <h3 class="section-title">Menu chính</h3>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" id="home-item-id" href="/bookseller/home">
+                            <span class="material-icons-outlined">home</span>
+                            <span class="nav-link-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-expandable"  href="#" onclick="toggleSubmenu(event, 'submenu-loaisach')">
+                            <span class="material-icons-outlined">menu_book</span>
+                            <span class="nav-link-text">Loại sách</span>
+                            <span class="material-icons-outlined expand-icon">expand_more</span>
+                        </a>
+                        <ul class="submenu" id="submenu-loaisach">
+                            <li class="submenu-item" th:each="item : ${categories}">
+                                <a class="submenu-link" href="#">
+                                    <span th:text="${item.categoryName}"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">local_offer</span>
+                            <span class="nav-link-text">Khuyến mãi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">shopping_cart</span>
+                            <span class="nav-link-text">Đơn hàng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">favorite</span>
+                            <span class="nav-link-text">Yêu thích</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <th:block class="nav-section">
+                <h3 class="section-title">Quản lý</h3>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">category</span>
+                            <span class="nav-link-text">Loại hàng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">inventory_2</span>
+                            <span class="nav-link-text">Hàng hóa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">group</span>
+                            <span class="nav-link-text">Người dùng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">receipt_long</span>
+                            <span class="nav-link-text">Đơn hàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </th:block>
+
+            <div class="nav-section">
+                <h3 class="section-title">Thông tin</h3>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">person_outline</span>
+                            <span class="nav-link-text">Tài khoản</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">notifications_none</span>
+                            <span class="nav-link-text">Thông báo</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="material-icons-outlined">help_outline</span>
+                            <span class="nav-link-text">Trợ giúp</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="user-card">
+                <div class="user-avatar-wrapper">
+                    <img alt="Michael Gabson Profile Picture" class="user-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqsE8frSlAuVVptbn17_Wkc5oNpA0GH38mrEbOa5dM7OBTTV4mcYQoaqb3CHtlUXXGiP7fTwEivliXlWncvqoVjPFMnTUOlxXLf_fqYBbOlf4X_iHJfk-0zox6xfTKyy2TGI8t2HypVTvUf3Q6smzCSE2nclrJVVEFtfcLfQEednpauGluK2s1NbntD8oSqNnhxo16QxBZjyG8DOz_dqW6pySoRRT_He4_cw4zc71LwgQdvdrzVudl17wfONWqR4k3woHW8UI1LQ"/>
+                    <span class="user-status"></span>
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Michael Gabson</p>
+                    <p class="user-email">michael@gmail.com</p>
+                </div>
+                <span class="material-icons-outlined">chevron_right</span>
+            </div>
+        </div>
+    </div>
+</div>

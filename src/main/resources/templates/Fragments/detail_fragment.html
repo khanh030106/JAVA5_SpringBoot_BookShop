@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phầm</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/detail_page.css">
+    </th:block>
+</head>
+<body>
+<header>
+    <h1></h1>
+</header>
+<main>
+    <div class="detail_fragment">
+        <div class="book-grid">
+            <div class="book-images">
+                <div class="card sticky-top">
+                    <div class="image-main">
+                        <img alt="Bìa sách Đắc Nhân Tâm" th:src="@{|/images/book_images/${detail_book.mainImage.imageURL}|}"/>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active">
+                            <img alt="Thumbnail 1"
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJCDeU2mob4OmWOUpfKZqxYFHCRT9sQJ7UJC9JQ0yTfwC0Q2WWUHUY9zHCV_WClzqD-_PkTetpaKLKF0JFenQPSgT-9_1D0QT5d8nIRTDj-MEalRAlrJOb6bGz22hR4y2BvZk6hi23n-Ig4fZbZdWBNfqWvWD95OMH1_iK6sdX1FMe7_RJu2-CalEPZcNj2-tVU2PnxWkFd7wUeDsUb84vwuvWw7h57FO2KprrGDAqMwxuMEpEOeRUkDsN4HLGRhIHewK5eK6cbA"/>
+                        </div>
+                        <div class="thumbnail">
+                            <img alt="Thumbnail 2"
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMbDM_KTZwiD5IjvCqmVuem86qmfI_XG_SClzMAv4K2rM4bPSCFJR2g0cUQeCAy0JXnLOsw03Tfx7tGrClSzQtjzGpiHDi3Ki7OJXSQXN3l_xRX-qNtCc83y2Ycw-RbCXGKcdKG1Z1MMLrtmMnu20HfBtpLG0g0QbhVM697mJUNzGzDNMybqT-iq78hJdQ1MutIUNJA4fJeRrIKIOdnTk2kqP6KKi2rZaJBnHqvnp2snEUAOmve2G_DbDdLKEJjIjTGNclZKbbQM8"/>
+                        </div>
+                        <div class="thumbnail">
+                            <img alt="Thumbnail 3"
+                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbTr19F-WdkJDMsQtRAn_Jc9TroH63mSnHHv5_k-XFdRkJhf4VjSUDLRM9hCjw8EWf8UOu3QV5upX0rfGoaFUH0_w-nYDXOPhVDJRGFd3wBSn9YHPHry4zGpyZEIID1lW2atYUGCSjA5KK_BJ47ip70xsrf6zUmVQqbOa7Z90L5nV6tWbJHxGtC3U8905YfQqxS1Ht8wQcU5IVLKg_u_3cX0u4Z82Q_HPihCDb7BPJdWrcSWVjakcKfu83j--l4TS37G70c6oCK2E"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-info-section">
+                <div class="card card-lg">
+                    <h1 th:text="${detail_book.title}" class="book-title"></h1>
+                    <div class="product-meta">
+                        <div class="rating">
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star_half</span>
+                        </div>
+                        <span class="meta-divider">Đã bán<strong th:text="' '+ ${detail_book.soldCount > 1000 and detail_book.soldCount < 10000  ? #strings.substring(detail_book.soldCount, 0, 1)+'k+' : detail_book.soldCount}"></strong></span>
+                        <span class="meta-divider">Đánh giá
+                                <strong>892</strong></span>
+                    </div>
+                    <div class="price-section">
+                        <span th:text="${#numbers.formatDecimal(detail_book.price, 0, 'POINT', 0, 'POINT')}+'đ'" class="price-current"></span>
+                    </div>
+                    <div class="specs-grid">
+                        <div class="spec-row">
+                            <span class="spec-label">Tác giả:</span>
+                            <span th:text="${detail_book.authors.authorName}" class="spec-value link"></span>
+                        </div>
+                        <div class="spec-row">
+                            <span th:text="'Nhà xuất bản: '+${detail_book.publisher}" class="spec-label" style="width: 25rem;"></span>
+                            <span class="spec-value"></span>
+                        </div>
+                    </div>
+                    <div class="purchase-area">
+                        <div class="quantity-section">
+                            <span class="quantity-label">Số lượng:</span>
+                            <div class="quantity-control">
+                                <button class="qty-btn">-</button>
+                                <input class="qty-input" readonly
+                                       type="text" value="1"/>
+                                <button class="qty-btn">+</button>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-outline">
+                                <span class="material-icons">add_shopping_cart</span>Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-primary">
+                                Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                            <span
+                                    class="material-icons feature-icon blue">local_shipping</span>
+                        <div class="feature-text">
+                            <p class="feature-title">Giao hàng nhanh</p>
+                            <p class="feature-desc">Nội thành trong 24h</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                            <span
+                                    class="material-icons feature-icon green">verified_user</span>
+                        <div class="feature-text">
+                            <p class="feature-title">Chính hãng 100%</p>
+                            <p class="feature-desc">Đền tiền nếu giả</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                            <span
+                                    class="material-icons feature-icon purple">assignment_return</span>
+                        <div class="feature-text">
+                            <p class="feature-title">Đổi trả 30 ngày</p>
+                            <p class="feature-desc">Thủ tục đơn giản</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-lg">
+                    <h3 class="description-title">Mô tả sản phẩm</h3>
+                    <div class="description-content">
+                        <p th:text="${detail_book.description}+'.'"><strong th:text="${detail_book.title}+ '-'"></strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#same-cate" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Sách cùng thể loại</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#rating" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Đánh giá sản phẩm</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="same-cate" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                    <div class="section-header">
+                        <a class="view-more" href="#">
+                            Xem thêm <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="products_gird">
+                        <div class="products_card" th:each="item : ${same_cate_books}">
+                            <div class="product-card" style="height: 490px;">
+                                <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="product-link"></a>
+                                <div class="product-image">
+                                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL}|}"
+                                         alt>
+                                    <a href="benefit_fragment.html"
+                                       class="wishlist-btn">
+                                        <i class="bi bi-heart"></i>
+                                    </a>
+                                </div>
+                                <div class="product-body">
+                                    <h6 class="product-title" th:text="${item.title != null && #strings.length(item.title) > 26 ? #strings.substring(item.title, 0, 22) + '...' : item.title}"></h6>
+                                    <p class="product-price" th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')} + 'đ'"></p>
+                                    <div class="product-meta">
+                                        <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="buy_now">Mua ngay</a>
+                                        <a href="index_fragment.html" class="add-cart">
+                                            <i class="material-icons">add_shopping_cart</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="rating" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    Đây là tab2
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

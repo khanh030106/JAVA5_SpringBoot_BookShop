@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book-Selling Website</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="/css/index.css">
+    <script th:src="@{/js/htmx.min.js}"></script>
+</head>
+<body>
+<div th:replace="~{Fragments/sidebar_fragment :: sidebar}"></div>
+<header>
+    <section class="introduction_section">
+        <div class="back-ground_area">
+            <div th:replace="~{Fragments/header_fragment :: header}"></div>
+            <hr>
+            <div th:replace="~{Fragments/home_fragments/introduction_fragment :: introduction}"></div>
+        </div>
+        <div th:replace="~{Fragments/home_fragments/benefit_fragment :: benefit}"></div>
+        <hr>
+    </section>
+</header>
+<main>
+    <section class="products_area" id="products_area">
+        <div th:replace="~{Fragments/home_fragments/index_fragment :: section_products_area}"></div>
+    </section>
+</main>
+<div th:replace="~{Fragments/footer_fragment :: footer}"></div>
+<script src="/js/home.js"></script>
+<script>
+
+
+
+</script>
+</body>
+</html>
