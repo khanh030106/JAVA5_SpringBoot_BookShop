@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/manager/orders_management.css">
+    </th:block>
+</head>
+<body>
+<main>
+<div class="container">
+    <div class="top-section">
+        <div class="header-content">
+            <div>
+                <h2>Order Management</h2>
+                <p class="header-subtitle">Track and manage customer orders efficiently</p>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-secondary">
+                    <span class="material-symbols-outlined">download</span>
+                    Export Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-area">
+        <div class="content-wrapper">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <p class="stat-title">Total Orders</p>
+                        <span class="material-symbols-outlined stat-icon icon-primary">receipt_long</span>
+                    </div>
+                    <div class="stat-value-row">
+                        <p class="stat-value">1,245</p>
+                        <p class="stat-change">
+                            <span class="material-symbols-outlined" style="font-size: 0.875rem; margin-right: 0.125rem;">trending_up</span>
+                            +5%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <p class="stat-title">Pending Orders</p>
+                        <span class="material-symbols-outlined stat-icon icon-orange">pending_actions</span>
+                    </div>
+                    <div class="stat-value-row">
+                        <p class="stat-value">34</p>
+                        <p class="stat-note">Needs attention</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <p class="stat-title">Revenue Today</p>
+                        <span class="material-symbols-outlined stat-icon icon-green">payments</span>
+                    </div>
+                    <div class="stat-value-row">
+                        <p class="stat-value">15,400,000 ₫</p>
+                        <p class="stat-change">
+                            <span class="material-symbols-outlined" style="font-size: 0.875rem; margin-right: 0.125rem;">trending_up</span>
+                            +12%
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-card">
+                <div class="search-box">
+                    <span class="material-symbols-outlined search-icon">search</span>
+                    <input type="text" class="search-input" placeholder="Search by Order ID, Customer Name...">
+                </div>
+                <div class="filters-group">
+                    <div class="select-wrapper">
+                        <select class="select-input">
+                            <option>All Statuses</option>
+                            <option>Pending</option>
+                            <option>Shipping</option>
+                            <option>Completed</option>
+                            <option>Cancelled</option>
+                        </select>
+                        <span class="material-symbols-outlined select-icon">expand_more</span>
+                    </div>
+                    <div class="select-wrapper">
+                        <select class="select-input">
+                            <option>Last 30 Days</option>
+                            <option>Last 7 Days</option>
+                            <option>Today</option>
+                        </select>
+                        <span class="material-symbols-outlined select-icon">expand_more</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="th-sortable">
+                                <div class="th-sort-header">
+                                    Order ID <span class="material-symbols-outlined">unfold_more</span>
+                                </div>
+                            </th>
+                            <th>Customer</th>
+                            <th class="th-sortable">
+                                <div class="th-sort-header">
+                                    Date <span class="material-symbols-outlined">arrow_drop_down</span>
+                                </div>
+                            </th>
+                            <th style="text-align: right;">Total Amount</th>
+                            <th>Status</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <a href="#" class="order-link">#KB-2023-001</a>
+                            </td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar avatar-blue">NV</div>
+                                    <div class="customer-name">Nguyen Van A</div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="date-text">Oct 24, 2023</span>
+                            </td>
+                            <td>
+                                <span class="amount-text">450,000 ₫</span>
+                            </td>
+                            <td>
+                                        <span class="status-badge status-pending">
+                                            <span class="status-dot dot-orange"></span>
+                                            Pending
+                                        </span>
+                            </td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="action-btn" title="View Details">
+                                        <span class="material-symbols-outlined">visibility</span>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit Order">
+                                        <span class="material-symbols-outlined">edit_note</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a href="#" class="order-link">#KB-2023-002</a>
+                            </td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar avatar-purple">TM</div>
+                                    <div class="customer-name">Tran Thi Mai</div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="date-text">Oct 23, 2023</span>
+                            </td>
+                            <td>
+                                <span class="amount-text">1,200,000 ₫</span>
+                            </td>
+                            <td>
+                                        <span class="status-badge status-shipping">
+                                            <span class="status-dot dot-blue"></span>
+                                            Shipping
+                                        </span>
+                            </td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="action-btn" title="View Details">
+                                        <span class="material-symbols-outlined">visibility</span>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit Order">
+                                        <span class="material-symbols-outlined">edit_note</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a href="#" class="order-link">#KB-2023-003</a>
+                            </td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar avatar-green">LH</div>
+                                    <div class="customer-name">Le Hoang</div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="date-text">Oct 23, 2023</span>
+                            </td>
+                            <td>
+                                <span class="amount-text">250,000 ₫</span>
+                            </td>
+                            <td>
+                                        <span class="status-badge status-completed">
+                                            <span class="status-dot dot-green"></span>
+                                            Completed
+                                        </span>
+                            </td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="action-btn" title="View Details">
+                                        <span class="material-symbols-outlined">visibility</span>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit Order">
+                                        <span class="material-symbols-outlined">edit_note</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a href="#" class="order-link">#KB-2023-004</a>
+                            </td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar avatar-red">PK</div>
+                                    <div class="customer-name">Pham Khanh</div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="date-text">Oct 22, 2023</span>
+                            </td>
+                            <td>
+                                <span class="amount-text">890,000 ₫</span>
+                            </td>
+                            <td>
+                                        <span class="status-badge status-cancelled">
+                                            <span class="status-dot dot-gray"></span>
+                                            Cancelled
+                                        </span>
+                            </td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="action-btn" title="View Details">
+                                        <span class="material-symbols-outlined">visibility</span>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit Order">
+                                        <span class="material-symbols-outlined">edit_note</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a href="#" class="order-link">#KB-2023-005</a>
+                            </td>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar avatar-yellow">DT</div>
+                                    <div class="customer-name">Do Tuan</div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="date-text">Oct 22, 2023</span>
+                            </td>
+                            <td>
+                                <span class="amount-text">150,000 ₫</span>
+                            </td>
+                            <td>
+                                        <span class="status-badge status-completed">
+                                            <span class="status-dot dot-green"></span>
+                                            Completed
+                                        </span>
+                            </td>
+                            <td>
+                                <div class="actions-cell">
+                                    <button class="action-btn" title="View Details">
+                                        <span class="material-symbols-outlined">visibility</span>
+                                    </button>
+                                    <button class="action-btn edit" title="Edit Order">
+                                        <span class="material-symbols-outlined">edit_note</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <div class="pagination-info">
+                        Showing <strong>1</strong> to <strong>5</strong> of <strong>1,245</strong> results
+                    </div>
+                    <nav class="pagination-nav" aria-label="Pagination">
+                        <a href="#" class="page-link">
+                            <span class="sr-only">Previous</span>
+                            <span class="material-symbols-outlined page-icon">chevron_left</span>
+                        </a>
+                        <a href="#" class="page-link active" aria-current="page">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <span class="page-link">...</span>
+                        <a href="#" class="page-link">10</a>
+                        <a href="#" class="page-link">
+                            <span class="sr-only">Next</span>
+                            <span class="material-symbols-outlined page-icon">chevron_right</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+</body>
+</html>

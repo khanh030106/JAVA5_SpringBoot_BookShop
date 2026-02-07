@@ -30,4 +30,10 @@ public interface AuthRepository extends JpaRepository<User, Long> {
 """, nativeQuery = true)
     void inserUserRole(@Param("userID") Long userID, @Param("roleID") Integer roleID);
 
+    Optional<User> findByEmail(String email);
+
+    @Query("""
+    SELECT u FROM User u WHERE u.id = :id
+    """)
+    public User findById(@Param("id") long id);
 }

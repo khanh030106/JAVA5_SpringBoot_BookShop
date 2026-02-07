@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/profile.css">
+    </th:block>
+</head>
+<body>
+<main class="pf-main-content">
+    <div class="pf-content-wrapper">
+        <div class="pf-profile-card">
+            <div class="pf-cover-image" style="background-image: url('https://i.pinimg.com/1200x/8e/0c/6b/8e0c6b517af9b9b4cc79b5f96f615221.jpg');">
+                <div class="pf-cover-gradient"></div>
+                <button class="pf-change-cover-btn">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">photo_camera</span>
+                    Change Cover
+                </button>
+            </div>
+
+            <div class="pf-profile-content">
+                <div class="pf-profile-header">
+                    <div class="pf-avatar-container">
+                        <div class="pf-profile-avatar" style="background-image: url('https://i.pinimg.com/736x/36/fa/1e/36fa1e28651532d5ad1211a9be8624f1.jpg');"></div>
+                        <button class="pf-edit-avatar-btn" aria-label="Edit Avatar">
+                            <span class="material-symbols-outlined" style="font-size: 1.125rem; line-height: 1;">edit</span>
+                        </button>
+                    </div>
+                    <div class="pf-profile-info">
+                        <h1 class="pf-profile-name">Jane Doe</h1>
+                        <p class="pf-profile-subtitle">Avid Reader | Member since 2021</p>
+                    </div>
+                </div>
+
+                <div class="pf-form-section">
+                    <div class="pf-section-header">
+                        <span class="material-symbols-outlined pf-section-header-icon">person</span>
+                        <h3 class="pf-section-title">Personal Information</h3>
+                    </div>
+
+                    <div class="pf-form-grid">
+                        <div class="pf-form-column">
+                            <div class="pf-form-group">
+                                <label class="pf-form-label">Full Name</label>
+                                <div class="pf-input-wrapper">
+                                    <input class="pf-form-input" type="text" placeholder="Enter full name" value="Jane Doe">
+                                    <span class="material-symbols-outlined pf-input-icon" style="font-size: 1.25rem;">badge</span>
+                                </div>
+                            </div>
+
+                            <div class="pf-form-group">
+                                <label class="pf-form-label">Email Address</label>
+                                <div class="pf-input-wrapper">
+                                    <input class="pf-form-input" type="email" placeholder="Enter email" value="jane.doe@example.com">
+                                    <span class="material-symbols-outlined pf-input-icon" style="font-size: 1.25rem;">mail</span>
+                                </div>
+                            </div>
+
+                            <div class="pf-form-group">
+                                <label class="pf-form-label">Phone Number</label>
+                                <div class="pf-input-wrapper">
+                                    <input class="pf-form-input" type="tel" placeholder="Enter phone number" value="+1 (555) 123-4567">
+                                    <span class="material-symbols-outlined pf-input-icon" style="font-size: 1.25rem;">call</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pf-form-column">
+                            <div class="pf-form-group">
+                                <label class="pf-form-label">Birthday</label>
+                                <div class="pf-input-wrapper">
+                                    <input class="pf-form-input" type="date" value="1990-05-15" style="color-scheme: light;">
+                                    <span class="material-symbols-outlined pf-input-icon" style="font-size: 1.25rem;">cake</span>
+                                </div>
+                            </div>
+
+                            <div class="pf-form-group">
+                                <label class="pf-form-label">Gender</label>
+                                <div class="pf-input-wrapper">
+                                    <select class="pf-form-input">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                        <option>Non-binary</option>
+                                        <option>Prefer not to say</option>
+                                    </select>
+                                    <span class="material-symbols-outlined pf-input-icon" style="font-size: 1.25rem;">wc</span>
+                                    <span class="material-symbols-outlined pf-select-icon" style="font-size: 1.25rem;">expand_more</span>
+                                </div>
+                            </div>
+
+                            <div class="pf-form-group">
+                                <label class="pf-form-label">Address</label>
+                                <div class="pf-input-wrapper">
+                                    <input class="pf-form-input" type="text" placeholder="Enter full address" value="123 Library Lane, Booktown, NY">
+                                    <span class="material-symbols-outlined pf-input-icon" style="font-size: 1.25rem;">location_on</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pf-action-bar">
+                        <button class="pf-btn-cancel">Cancel</button>
+                        <button class="pf-btn-save">
+                            <span class="material-symbols-outlined" style="font-size: 1.125rem;">save</span>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

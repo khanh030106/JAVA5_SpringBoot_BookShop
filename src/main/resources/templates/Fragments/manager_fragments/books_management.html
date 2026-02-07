@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/manager/books_management.css">
+    </th:block>
+</head>
+<body>
+<main class="kb-inv-main">
+    <!-- Scrollable Content Area -->
+    <div class="kb-inv-content">
+        <!-- Page Header -->
+        <div class="kb-inv-page-header">
+            <h2 class="kb-inv-page-title">Book Inventory</h2>
+            <div class="kb-inv-header-actions">
+                <button class="kb-inv-btn kb-inv-btn-secondary">
+                    <span class="material-symbols-outlined kb-inv-btn-icon">file_download</span>
+                    Export
+                </button>
+                <button class="kb-inv-btn kb-inv-btn-primary">
+                    <span class="material-symbols-outlined kb-inv-btn-icon">add</span>
+                    Add New Book
+                </button>
+            </div>
+        </div>
+        <!-- Filters & Search -->
+        <div class="kb-inv-filters">
+            <div class="kb-inv-select-wrapper">
+                <select class="kb-inv-select">
+                    <option>All Categories</option>
+                    <option>Fiction</option>
+                    <option>Non-Fiction</option>
+                    <option>Science</option>
+                    <option>History</option>
+                </select>
+                <div class="kb-inv-select-icon">
+                    <span class="material-symbols-outlined">expand_more</span>
+                </div>
+            </div>
+            <div class="kb-inv-select-wrapper">
+                <select class="kb-inv-select">
+                    <option>Stock Status</option>
+                    <option>In Stock</option>
+                    <option>Low Stock</option>
+                    <option>Out of Stock</option>
+                </select>
+                <div class="kb-inv-select-icon">
+                    <span class="material-symbols-outlined">expand_more</span>
+                </div>
+            </div>
+        </div>
+        <!-- Table -->
+        <div class="kb-inv-table-card">
+            <div class="kb-inv-table-wrapper">
+                <table class="kb-inv-table">
+                    <thead class="kb-inv-table-head">
+                    <tr>
+                        <th class="kb-inv-th kb-inv-th-cover">Cover</th>
+                        <th class="kb-inv-th">Book Title</th>
+                        <th class="kb-inv-th">Category</th>
+                        <th class="kb-inv-th">Author</th>
+                        <th class="kb-inv-th">Price</th>
+                        <th class="kb-inv-th">Stock</th>
+                        <th class="kb-inv-th kb-inv-th-actions">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="kb-inv-table-body">
+                    <!-- Row 1 -->
+                    <tr class="kb-inv-table-row">
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-cover">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5q16W6z5OUo1yGc2mPRYzkBE5NrH1VU45nYdwb9SuF4jXAKG3jAF2drXdz-8F6u0vnRwYCbAgLRPd-wt8XVl6mPa9i1YuiFKFHsIEsrkDr75UBT1USJFOCd7IDoXq-G1pdTUmKjSADd1el3pmrT5SMfPwevyLTTNR8eXctziZ0cWLIJjOwJUTm9eN2zAd0v2HJ9L7W2p8ZUvRlD7kjJDZ-wJM4IMEpGyOtOJKQ6GBEaxDI7nm677B3BRNJ2RdyLMbVKSFpX64Go1R" alt="Book Cover" class="kb-inv-cover-img">
+                            </div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-book-title">The Great Gatsby</div>
+                            <div class="kb-inv-book-isbn">ISBN: 978-0743273565</div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <span class="kb-inv-badge kb-inv-badge-blue">Classic Fiction</span>
+                        </td>
+                        <td class="kb-inv-td kb-inv-author">F. Scott Fitzgerald</td>
+                        <td class="kb-inv-td kb-inv-price">$12.99</td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-stock">
+                                <div class="kb-inv-stock-dot kb-inv-stock-green"></div>
+                                <span class="kb-inv-stock-text">145</span>
+                            </div>
+                        </td>
+                        <td class="kb-inv-td kb-inv-actions-cell">
+                            <button class="kb-inv-action-btn kb-inv-edit-btn" title="Edit">
+                                <span class="material-symbols-outlined kb-inv-action-icon">edit</span>
+                            </button>
+                            <button class="kb-inv-action-btn kb-inv-delete-btn" title="Delete">
+                                <span class="material-symbols-outlined kb-inv-action-icon">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr class="kb-inv-table-row">
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-cover">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiz62TNIy-tnoYi6XHw1KOslyEb1o8Q5wywj03-ciFzOmz_J2vlAyUm60uIgyxO6CkcaZAiQKoBLXk1g6uvORx3zF0I4AXFa6mOppxVP_yKbc0Xh4EGKmwGpmAr6sOB_ApXac1WeOybuQB0mZk0TNil7JTQDreiSn4X2ay6Ir0parKNb8rKjxKHrjukQc481ryH8tnbck1XP4d2RTaQKyNqeak-khXnwybexqgCQKzRd2kG_1vqvVXxNw5gFqiNul9bgiBeoWDuSTC" alt="Book Cover" class="kb-inv-cover-img">
+                            </div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-book-title">Atomic Habits</div>
+                            <div class="kb-inv-book-isbn">ISBN: 978-0735211292</div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <span class="kb-inv-badge kb-inv-badge-orange">Self-Help</span>
+                        </td>
+                        <td class="kb-inv-td kb-inv-author">James Clear</td>
+                        <td class="kb-inv-td kb-inv-price">$16.50</td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-stock">
+                                <div class="kb-inv-stock-dot kb-inv-stock-yellow"></div>
+                                <span class="kb-inv-stock-text kb-inv-stock-low">12 (Low)</span>
+                            </div>
+                        </td>
+                        <td class="kb-inv-td kb-inv-actions-cell">
+                            <button class="kb-inv-action-btn kb-inv-edit-btn" title="Edit">
+                                <span class="material-symbols-outlined kb-inv-action-icon">edit</span>
+                            </button>
+                            <button class="kb-inv-action-btn kb-inv-delete-btn" title="Delete">
+                                <span class="material-symbols-outlined kb-inv-action-icon">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr class="kb-inv-table-row">
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-cover">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Sd9UuayXIyN_udlPGl187SZy4cIUK6yAxlKvZkzoElwDFzHIksWY2UuQyNaTWAa6kc-iWBvrk9RLeOa3Z3WgkLuqJ_FDQXB9Iy_rhk7asWoX0RAvcphOSsV7EMfNSp-_ftOFYRqtQ3bOD4mOgv-2e08OeDHYTGQ_vQ-d6qFbn56r94UnJlIoEjVo0k3AdPR1oyu7CbcIIfUq5qtBiZUaCvaJnSASdhwLe5hw5S0ram9XXghDUexZcnrLL4d2nXDJMUM_HTVpbIS1" alt="Book Cover" class="kb-inv-cover-img">
+                            </div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-book-title">Dune</div>
+                            <div class="kb-inv-book-isbn">ISBN: 978-0441172719</div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <span class="kb-inv-badge kb-inv-badge-purple">Sci-Fi</span>
+                        </td>
+                        <td class="kb-inv-td kb-inv-author">Frank Herbert</td>
+                        <td class="kb-inv-td kb-inv-price">$18.00</td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-stock">
+                                <div class="kb-inv-stock-dot kb-inv-stock-green"></div>
+                                <span class="kb-inv-stock-text">85</span>
+                            </div>
+                        </td>
+                        <td class="kb-inv-td kb-inv-actions-cell">
+                            <button class="kb-inv-action-btn kb-inv-edit-btn" title="Edit">
+                                <span class="material-symbols-outlined kb-inv-action-icon">edit</span>
+                            </button>
+                            <button class="kb-inv-action-btn kb-inv-delete-btn" title="Delete">
+                                <span class="material-symbols-outlined kb-inv-action-icon">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Row 4 -->
+                    <tr class="kb-inv-table-row">
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-cover">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTtE49kO1rSHnjq1rUfn1214ov6wK5l_SXfXlAkOH8mKWPDFqvDVvHsTwKT0T4xK7TZ6LuvRhztdx_tMGeQtJDzcGDFS2lmOSPJn5FT-iSClZQqwnfRV2MpNB0TKtKJB1ylIOXwtkGYtRy9Pp-HBeP04FhSWi0Fc8uP5G13RFyX1rw5XtHnd_SvjCN1M0IEPbaDGDxPOaACxjkWybSRYmLbDA2sVtJIcWEjtmdo1B3C7gGBfWNxIcTplB1yR_MLA2mHV-l9ZEo0m6f" alt="Book Cover" class="kb-inv-cover-img">
+                            </div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-book-title">Sapiens</div>
+                            <div class="kb-inv-book-isbn">ISBN: 978-0062316097</div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <span class="kb-inv-badge kb-inv-badge-emerald">History</span>
+                        </td>
+                        <td class="kb-inv-td kb-inv-author">Yuval Noah Harari</td>
+                        <td class="kb-inv-td kb-inv-price">$22.95</td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-stock">
+                                <div class="kb-inv-stock-dot kb-inv-stock-red"></div>
+                                <span class="kb-inv-stock-text kb-inv-stock-out">0 (Out of Stock)</span>
+                            </div>
+                        </td>
+                        <td class="kb-inv-td kb-inv-actions-cell">
+                            <button class="kb-inv-action-btn kb-inv-edit-btn" title="Edit">
+                                <span class="material-symbols-outlined kb-inv-action-icon">edit</span>
+                            </button>
+                            <button class="kb-inv-action-btn kb-inv-delete-btn" title="Delete">
+                                <span class="material-symbols-outlined kb-inv-action-icon">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Row 5 -->
+                    <tr class="kb-inv-table-row">
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-cover">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZrbNq7ricH1VaK2axAsREDhiG9OYIejlzTpiI4f5bDWv55Hi-mKp-6Aw6Zf5iVJztAMk7eEhY1ozKEZRJEN4qD3wB_2wdVKJP9zjHUDooBPNstfKXwrHHAYVOq5LnFg_u4IOfMzvOoEPfkhKnijQcJm6fL8ERAthJwoLMcbA5jmpmn2-kuCwAge2_3qJ8lHhwh-4nso-s7v_HsHCZkpoc_2vryCuZ_ux4mYp1DLa1oTlL5dFhIWinfvI4otAU37X6FQHGFOBcCWlg" alt="Book Cover" class="kb-inv-cover-img">
+                            </div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-book-title">The Alchemist</div>
+                            <div class="kb-inv-book-isbn">ISBN: 978-0062315007</div>
+                        </td>
+                        <td class="kb-inv-td">
+                            <span class="kb-inv-badge kb-inv-badge-blue">Fiction</span>
+                        </td>
+                        <td class="kb-inv-td kb-inv-author">Paulo Coelho</td>
+                        <td class="kb-inv-td kb-inv-price">$14.99</td>
+                        <td class="kb-inv-td">
+                            <div class="kb-inv-stock">
+                                <div class="kb-inv-stock-dot kb-inv-stock-green"></div>
+                                <span class="kb-inv-stock-text">230</span>
+                            </div>
+                        </td>
+                        <td class="kb-inv-td kb-inv-actions-cell">
+                            <button class="kb-inv-action-btn kb-inv-edit-btn" title="Edit">
+                                <span class="material-symbols-outlined kb-inv-action-icon">edit</span>
+                            </button>
+                            <button class="kb-inv-action-btn kb-inv-delete-btn" title="Delete">
+                                <span class="material-symbols-outlined kb-inv-action-icon">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="kb-inv-pagination">
+                <div class="kb-inv-pagination-info">
+                    Showing <span class="kb-inv-pagination-bold">1</span> to <span class="kb-inv-pagination-bold">5</span> of <span class="kb-inv-pagination-bold">48</span> results
+                </div>
+                <div class="kb-inv-pagination-buttons">
+                    <button class="kb-inv-pagination-btn" disabled>Previous</button>
+                    <button class="kb-inv-pagination-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

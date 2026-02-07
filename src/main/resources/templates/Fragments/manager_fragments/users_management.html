@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/manager/users_management.css">
+    </th:block>
+</head>
+<body>
+<div class="container">
+    <main>
+        <div class="page-header">
+            <div class="header-content">
+                <h1>User Management</h1>
+                <p class="subtitle">Manage user access, roles, and
+                    account statuses across the platform.</p>
+            </div>
+        </div>
+        <div class="content-area">
+            <div class="content-wrapper">
+                <div class="toolbar">
+                    <div class="search-filters">
+                        <div class="search-wrapper">
+                                    <span
+                                            class="material-symbols-outlined search-icon">search</span>
+                            <input class="search-input" type="text"
+                                   placeholder="Search users by email or name...">
+                        </div>
+                        <div class="filters">
+                            <select class="filter-select">
+                                <option value="all">All</option>
+                                <option
+                                        value="customer">Customer</option>
+                                <option
+                                        value="admin">Administrator</option>
+                            </select>
+                            <select class="filter-select">
+                                <option value="all">All</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="banned">Banned</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="add-user-btn">
+                                <span
+                                        class="material-symbols-outlined">add</span>
+                        Add New User
+                    </button>
+                </div>
+                <div class="table-card">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Role</th>
+                                <th>Joined Date</th>
+                                <th>Status</th>
+                                <th
+                                        class="actions-cell">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar"
+                                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCO_YGEHqFkMehvfhH5PU_miSpdoqa-DuHYxvFvNkcLtLGPMAkeZYWSIC_0KIPLAJnFrd-BAXXFGs2I-58hm4Of2C4QeQX0x_QReGKeZCTAQ2Vl6NiAlgYpN9Hv4vCuQBvM11J6dAzNSEgz8pO3lQIATZ7OmEAvW6Klrho-sLUbhhrHcMc7QsgcEUNAe_DJV-QA9OE0GngimQp5pme5LXBBE4ouZEK5TpqMYcJEdNVnqTsM4QdrxbTr4YZGjn2W1kF8E7rSZvUIe7oG');"></div>
+                                        <div class="user-info">
+                                                        <span
+                                                                class="user-name">Marcus
+                                                            Johnson</span>
+                                            <span
+                                                    class="user-email">marcus.j@example.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="badge badge-customer">Customer</span>
+                                </td>
+                                <td>
+                                                <span class="date-text">Oct 24,
+                                                    2023</span>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="status-badge status-active">
+                                                    <span
+                                                            class="status-dot dot-active"></span>
+                                                    Active
+                                                </span>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="action-btn">
+                                                    <span
+                                                            class="material-symbols-outlined">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar"
+                                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1ZyelCoF1AdA6jL6G4-UKDdQBbx4eMAbBG7blSvalOjLdXTs0IScqG8yVheKDngwG-_Uu0397TPq7EyDJmarlgqLWiS56a7VgheLmvBr_324PygfgQdFzRsByN3-TblcL56bQQh1fRrhA4azfJLIvOI8dZYa-k5Gs0h4hmc-ClorLJMYOoR6ZnAhlBRSZtuMdZJPv5fnOP3bg6hjkfiVgsuPXycZ0eLxD6zfqAlcw9hCE4M7vAKz-VUTpRKxXZSEX2obgFoTFlh29');"></div>
+                                        <div class="user-info">
+                                                        <span
+                                                                class="user-name">Alicia
+                                                            Keys</span>
+                                            <span
+                                                    class="user-email">alicia.k@kbooks.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="badge badge-admin">Administrator</span>
+                                </td>
+                                <td>
+                                                <span class="date-text">Sep 12,
+                                                    2023</span>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="status-badge status-active">
+                                                    <span
+                                                            class="status-dot dot-active"></span>
+                                                    Active
+                                                </span>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="action-btn">
+                                                    <span
+                                                            class="material-symbols-outlined">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="banned">
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar banned"
+                                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8bcY9cjtmWCnljatY5FRP7A-txV-_oJRlZ85AbR_NdWMRFyAq7Rh62my5e51gbNYTZsfrYAfzIZ0gaFP00821PBWWPvQX4Oxztzf58stp9z5YWrsBgvkFDCpKC0M-uq0x1f26wnmw5fZOw5aDIxvpdnT6maO1oeAeID0Z1LbQz2ritccA4unCeHND14E02ypOM7LxeqDsiiMQBx2kYjpHhV04vD3DnHiuU_ud5r7WwYrk77gaSj3bD2lXG9zFxQGrGviuSagRo2xN');"></div>
+                                        <div class="user-info">
+                                                        <span
+                                                                class="user-name">Robert
+                                                            Fox</span>
+                                            <span
+                                                    class="user-email">robert.fox@example.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="badge badge-customer">Customer</span>
+                                </td>
+                                <td>
+                                                <span class="date-text">Nov 05,
+                                                    2023</span>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="status-badge status-banned">
+                                                    <span
+                                                            class="status-dot dot-banned"></span>
+                                                    Banned
+                                                </span>
+                                </td>
+                                <td class="actions-cell">
+                                    <div class="action-buttons">
+                                        <button class="icon-btn"
+                                                title="Edit">
+                                                        <span
+                                                                class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button
+                                                class="icon-btn unban"
+                                                title="Unban">
+                                                        <span
+                                                                class="material-symbols-outlined">lock_open</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="avatar"
+                                             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQDtE5-atedG4weRFbp_M1kExU006XrBL06m3cl0c0SK7AmhfbK5GO7ns3iKR2JvdUg99FVUI5-DfMJzwqn5QSFryzB0HidJEORqC55hAXV-FThRCwdBjHWeQDiet3ekBWKMMvskZ9OdYNpjpzzd65Co7n70DNRjZcCXYNpj61VQqcg3l0ucF1dwBQolGIS7ETQ6Mlnnj7-CWVJRSZD5v9hDWIdJzENuJZQgxIP01cI589kXqc56JxODTG-vBsWV6i30TPYf16kS4S');"></div>
+                                        <div class="user-info">
+                                                        <span
+                                                                class="user-name">Eleanor
+                                                            Pena</span>
+                                            <span
+                                                    class="user-email">eleanor.p@example.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="badge badge-customer">Customer</span>
+                                </td>
+                                <td>
+                                                <span class="date-text">Oct 28,
+                                                    2023</span>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="status-badge status-pending">
+                                                    <span
+                                                            class="status-dot dot-pending"></span>
+                                                    Pending
+                                                </span>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="action-btn">
+                                                    <span
+                                                            class="material-symbols-outlined">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-cell">
+                                        <div
+                                                class="avatar-placeholder">CD</div>
+                                        <div class="user-info">
+                                                        <span
+                                                                class="user-name">Cody
+                                                            Fisher</span>
+                                            <span
+                                                    class="user-email">cody.fisher@example.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="badge badge-customer">Customer</span>
+                                </td>
+                                <td>
+                                                <span class="date-text">Jan 12,
+                                                    2024</span>
+                                </td>
+                                <td>
+                                                <span
+                                                        class="status-badge status-active">
+                                                    <span
+                                                            class="status-dot dot-active"></span>
+                                                    Active
+                                                </span>
+                                </td>
+                                <td class="actions-cell">
+                                    <button class="action-btn">
+                                                    <span
+                                                            class="material-symbols-outlined">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <div class="pagination-info">
+                            Showing <strong>1</strong> to
+                            <strong>5</strong> of <strong>42</strong>
+                            users
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

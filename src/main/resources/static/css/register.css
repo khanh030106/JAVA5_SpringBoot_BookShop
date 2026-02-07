@@ -246,26 +246,12 @@
 }
 
 /* Password Toggle Button */
-.register-password-toggle {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    padding-right: 0.75rem;
-    display: flex;
-    align-items: center;
-    color: rgba(140, 96, 95, 0.5);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transition: color 0.2s;
-}
 
-.register-password-toggle:hover {
+.password-toggle:hover {
     color: #181111;
 }
 
-.register-password-toggle .material-symbols-outlined {
+.password-toggle .material-symbols-outlined {
     font-size: 20px;
 }
 
@@ -432,6 +418,11 @@
     transform: translateX(2px);
 }
 
+.validation-message{
+    margin: 0 0 -3px 3px;
+    color: red;
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 .modal-overlay {
     position: fixed;
@@ -482,3 +473,19 @@
     from { transform: scale(.8); opacity: 0 }
     to   { transform: scale(1); opacity: 1 }
 }
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e5e7eb;
+    border-top-color: #111827;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+

@@ -1,12 +1,13 @@
 package assignment.java5.ass_self.Services;
 
+import assignment.java5.ass_self.DTO.LoginRequest;
 import assignment.java5.ass_self.DTO.RegisterRequest;
 import assignment.java5.ass_self.Entities.EmailVerificationToken;
 import assignment.java5.ass_self.Entities.Role;
 import assignment.java5.ass_self.Entities.User;
 import assignment.java5.ass_self.Repository.AuthRepository;
 import assignment.java5.ass_self.Repository.TokenRepository;
-import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
+import assignment.java5.ass_self.enums.AuthProvider;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,27 +27,23 @@ public class AuthService {
     private final AuthRepository authRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenRepository tokenRepository;
-    private final JavaMailSender javaMailSender;
+    private final MailService mailService;
 
     public AuthService(AuthRepository authRepository,
                        PasswordEncoder passwordEncoder,
                        TokenRepository tokenRepository,
-                       JavaMailSender javaMailSender
+                       MailService mailService
     ) {
         this.authRepository = authRepository;
         this.passwordEncoder = passwordEncoder;
         this.tokenRepository = tokenRepository;
-        this.javaMailSender = javaMailSender;
+        this.mailService = mailService;
     }
 
-        public void register(RegisterRequest request) {
+        public String register(RegisterRequest request) {
 
             if (authRepository.existByEmail(request.getEmail())) {
-                throw new RuntimeException("Email đã tồn tại");
-            }
-
-            if (!request.getPassword().equals(request.getConfirm_password())) {
-                throw new RuntimeException("Mật khẩu xác nhận không khớp");
+                return "Email đã tồn tại";
             }
 
             User user = new User();
@@ -54,6 +53,7 @@ public class AuthService {
             user.setDateOfBirth(request.getDob());
             user.setIsActive(false);
             user.setIsDeleted(false);
+            user.setProvider(AuthProvider.LOCAL);
             user.setPasswordHash(
                     passwordEncoder.encode(request.getPassword())
             );
@@ -61,8 +61,8 @@ public class AuthService {
             authRepository.save(user);
 
             Role adminRole = authRepository
-                    .findByRoleName("Admin")
-                    .orElseThrow(() -> new RuntimeException("Role Admin không tồn tại"));
+                    .findByRoleName("ROLE_CUSTOMER")
+                    .orElseThrow(() -> new RuntimeException("Role Customer không tồn tại"));
 
             authRepository.inserUserRole(user.getId(), adminRole.getId());
 
@@ -70,13 +70,15 @@ public class AuthService {
             token.setUserID(user);
             token.setToken(UUID.randomUUID().toString());
             token.setExpiredAt(
-                    Instant.now().plus(15, ChronoUnit.MINUTES)
+                    Instant.now().plus(2, ChronoUnit.MINUTES)
             );
             token.setIsUsed(false);
 
             tokenRepository.save(token);
 
-            sendVerifyMail(user, token.getToken());
+            mailService.sendVerifyMail(user, token.getToken());
+
+            return null;
         }
 
         public void verifyAccount(String tokenStr) {
@@ -105,26 +107,44 @@ public class AuthService {
             tokenRepository.save(token);
         }
 
-        private void sendVerifyMail(User user, String token) {
+        public User processOAuthPostLogin(String email,
+                                          String fullName,
+                                          String avatarUrl,
+                                          AuthProvider provider
 
-            String link =
-                    "http://localhost:8080/bookseller/verify?token=" + token;
-            System.out.println("http://localhost:8080/bookseller/verify?token=" + token);
+        ) {
+            Optional<User> existUser = authRepository.findByEmail(email);
 
-            SimpleMailMessage mail = new SimpleMailMessage();
-            mail.setTo(user.getEmail());
-            mail.setSubject("Xác nhận đăng ký tài khoản");
-            mail.setText("""
-                    Chào %s,
+            if (existUser.isPresent()) {
+                User u = existUser.get();
 
-                    Vui lòng nhấp vào liên kết sau để xác nhận tài khoản:
-                    %s
+                if (u.getProvider() != provider) {
+                    throw new RuntimeException("Bạn đã đăng ký với " + u.getProvider() +
+                            ". Vui lòng sử dụng " + u.getProvider() + " để đăng nhập.");
+                }
+                return u;
+            } else {
+                User newUser = new User();
+                newUser.setEmail(email);
+                newUser.setFullName(fullName);
+                newUser.setAvatar(avatarUrl);
+                newUser.setIsActive(true);
+                newUser.setIsDeleted(false);
+                newUser.setProvider(provider);
+                newUser.setPasswordHash(passwordEncoder.encode(UUID.randomUUID().toString()));
+                authRepository.save(newUser);
 
-                    Liên kết có hiệu lực trong 15 phút.
+                Role userRole = authRepository
+                        .findByRoleName("ROLE_CUSTOMER")
+                        .orElseThrow(() -> new RuntimeException("Role Customer không tồn tại"));
 
-                    Nếu bạn không đăng ký, hãy bỏ qua email này.
-                    """.formatted(user.getFullName(), link));
-            javaMailSender.send(mail);
+                authRepository.inserUserRole(newUser.getId(), userRole.getId());
 
+                return newUser;
+            }
+        }
+
+        public User findById(Long id){
+            return authRepository.findById(id).orElse(null);
         }
     }

@@ -2,6 +2,7 @@ package assignment.java5.ass_self.Services;
 
 import assignment.java5.ass_self.Entities.Book;
 import assignment.java5.ass_self.Repository.BookRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,24 +28,34 @@ public class BooksService {
         return bookRepository.findTopSoldOut(pageable).getContent();
     }
 
-    public List<Book> topSoldOut(){
-        Pageable pageable = PageRequest.of(0, 50);
-        return bookRepository.findTopSoldOut(pageable).getContent();
+    public Page<Book> topSoldOut(int index, int pageSize){
+        Pageable pageable = PageRequest.of(index, pageSize);
+        return bookRepository.findTopSoldOut(pageable);
     }
 
-    public List<Book> find30Books(){
-        Pageable pageable = PageRequest.of(0, 30);
+    public List<Book> find20Books(){
+        Pageable pageable = PageRequest.of(0, 20);
         return bookRepository.findAllBooksActive(pageable).getContent();
     }
 
-    public List<Book> findAllBooks(){
-        Pageable pageable = PageRequest.of(0, 50);
-        return bookRepository.findAllBooksActive(pageable).getContent();
+    public Page<Book> findAllBooks(int index, int pageSize){
+        Pageable pageable = PageRequest.of(index, pageSize);
+        return bookRepository.findAllBooksActive(pageable);
+    }
+
+    public List<Book> find25PromotionBooks(){
+        Pageable pageable = PageRequest.of(0, 25);
+        return bookRepository.findPromotionBooks(pageable).getContent();
+    }
+
+    public Page<Book> findAllPromotionBooks(int index, int pageSize){
+        Pageable pageable = PageRequest.of(index, pageSize);
+        return bookRepository.findPromotionBooks(pageable);
     }
 
     public List<Book> filterBooks(
             String price,
-            String category,
+            Long category,
             String author
     ){
         BigDecimal min = null;
@@ -69,7 +80,7 @@ public class BooksService {
         }
 
         return bookRepository.filterBooks(
-                emptyToNull(category),
+                Long.valueOf(emptyToNull(String.valueOf(category))),
                 emptyToNull(author),
                 min,
                 max,
@@ -90,5 +101,9 @@ public class BooksService {
         } else {
             return bookRepository.findBookWithCate(id, pageable).getContent();
         }
+    }
+
+    public Book findBookWithId(Long id){
+        return bookRepository.findById(id).orElse(null);
     }
 }

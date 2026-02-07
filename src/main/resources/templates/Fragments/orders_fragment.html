@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/Orders.css">
+    </th:block>
+</head>
+<body>
+<div class="kb-container">
+    <main class="kb-main">
+        <!-- Page Heading -->
+        <div class="kb-page-header">
+            <div class="kb-page-title-section">
+                <h1>My Orders</h1>
+                <p class="kb-page-subtitle">Track your past purchases,
+                    manage returns, and download invoices.</p>
+            </div>
+        </div>
+        <!-- Tabs -->
+        <div class="kb-tabs">
+            <div class="kb-tabs-list">
+                <a class="kb-tab kb-tab-active" href="#">
+                    <span class="kb-tab-label">All Orders</span>
+                    <span class="kb-tab-badge">12</span>
+                </a>
+                <a class="kb-tab" href="#">
+                    <span class="kb-tab-label">Pending</span>
+                    <span class="kb-tab-badge">2</span>
+                </a>
+                <a class="kb-tab" href="#">
+                    <span class="kb-tab-label">Shipping</span>
+                    <span class="kb-tab-badge">1</span>
+                </a>
+                <a class="kb-tab" href="#">
+                    <span class="kb-tab-label">Completed</span>
+                </a>
+                <a class="kb-tab" href="#">
+                    <span class="kb-tab-label">Cancelled</span>
+                </a>
+            </div>
+        </div>
+        <!-- Orders List -->
+        <div class="kb-orders-list">
+            <!-- Order Card 1: Completed -->
+            <div class="kb-order-card">
+                <!-- Card Header -->
+                <div class="kb-order-header">
+                    <div class="kb-order-info">
+                        <div class="kb-order-info-item">
+                            <p>Order Placed</p>
+                            <p>Oct 24, 2023</p>
+                        </div>
+                        <div class="kb-order-info-item">
+                            <p>Order ID</p>
+                            <p>#ORD-88291</p>
+                        </div>
+                        <div class="kb-order-info-item kb-order-total">
+                            <p>Total</p>
+                            <p>330.000đ</p>
+                        </div>
+                    </div>
+                    <div class="kb-order-status-actions">
+                                <span
+                                        class="kb-status-badge kb-status-delivered">
+                                    <span
+                                            class="material-symbols-outlined">check_circle</span>
+                                    Delivered
+                                </span>
+                    </div>
+                </div>
+                <!-- Card Content -->
+                <div class="kb-order-content">
+                    <div class="kb-order-body">
+                        <!-- Items List -->
+                        <div class="kb-items-list">
+                            <!-- Item 1 -->
+                            <div class="kb-order-item">
+                                <div class="kb-item-image">
+                                    <img
+                                            alt="Book cover of Rich Dad Poor Dad"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr5IAAgdm0xi2sLQm16T0X_dK4q1usFmo9iAYJLL7M2zpyFkcfNsV-F34SWHjwvDUI6QYFkRPRVHEplgOgRAhUxUrm7jsAni3Wao4uHzsXquwMUYnFyGydn_dOt5HpOZZG5giaszpcHhPW_jiAxNGJorXRsIykGEclU3iUWhLWKQZJPlNfXHOlGtTlU6qz9RfuLmq5PtqcxeZBZW8cduEyGrGIqXQVV8mOG4IWxulwurr-KQ14b_UtMB7Xv2PU_W4NW73aWtvfV0Ro"/>
+                                </div>
+                                <div class="kb-item-details">
+                                    <h3 class="kb-item-title">Rich Dad
+                                        Poor Dad</h3>
+                                    <p class="kb-item-author">Robert T.
+                                        Kiyosaki</p>
+                                    <div class="kb-item-price-quantity">
+                                                <span
+                                                        class="kb-item-price">150.000đ</span>
+                                        <span class="kb-item-quantity">x
+                                                    1</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="kb-order-item">
+                                <div class="kb-item-image">
+                                    <img
+                                            alt="Book cover of The Psychology of Money"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeFyiMeypBQGq3rqtzvu-tENK-V3Ny7TbXutw-lAVt_WCV4RQ3eI6DEfiYZt0S0JMctBhxwaoXXD08w5aU1p9nqzy3frZ36iAcQ-t7b2nEBdRWBs4-MNgWIw5jjfIL4uu1CtxdfLI9KA1hU6z2fse96BAEZFvZziBk4wAs_8l6XBJIlAZgdsXeerI6Fg91UNL7TlX0ILKH34E2q4yjALEg_jD4LSBpitG95cdRIAacklEthSojEiFJKo6nChQaCjvgVCmuhL5p0Xas"/>
+                                </div>
+                                <div class="kb-item-details">
+                                    <h3 class="kb-item-title">The
+                                        Psychology of Money</h3>
+                                    <p class="kb-item-author">Morgan
+                                        Housel</p>
+                                    <div class="kb-item-price-quantity">
+                                                <span
+                                                        class="kb-item-price">180.000đ</span>
+                                        <span class="kb-item-quantity">x
+                                                    1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Actions -->
+                        <div class="kb-order-actions">
+                            <button
+                                    class="kb-btn-action kb-btn-reorder">
+                                        <span
+                                                class="material-symbols-outlined">shopping_bag</span>
+                                Reorder
+                            </button>
+                            <a href="/bookseller/ordersDetails" class="kb-btn-action kb-btn-secondary">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Order Card 2: Shipping -->
+            <div class="kb-order-card">
+                <div class="kb-order-header">
+                    <div class="kb-order-info">
+                        <div class="kb-order-info-item">
+                            <p>Order Placed</p>
+                            <p>Nov 12, 2023</p>
+                        </div>
+                        <div class="kb-order-info-item">
+                            <p>Order ID</p>
+                            <p>#ORD-99102</p>
+                        </div>
+                        <div class="kb-order-info-item kb-order-total">
+                            <p>Total</p>
+                            <p>450.000đ</p>
+                        </div>
+                    </div>
+                    <div class="kb-order-status-actions">
+                                <span
+                                        class="kb-status-badge kb-status-shipping">
+                                    <span
+                                            class="material-symbols-outlined">local_shipping</span>
+                                    Shipping
+                                </span>
+                    </div>
+                </div>
+                <div class="kb-order-content">
+                    <div class="kb-order-body">
+                        <div class="kb-items-list">
+                            <div class="kb-order-item">
+                                <div class="kb-item-image">
+                                    <img
+                                            alt="Book cover of Atomic Habits"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUNGkyNGeha7eIM9DVlX5NTiI4mfx3S85MfNBs_Ih1TW_NmcXDBVZuSKPtswnyygZn7a4odsfWhXHdO0HCT1BS7cfvUjLCvzCN5Gy9NAzTIFuPQNB4Fqqbrz0Z67uISTljTfuUqRLOghUQCD41fFtzGDxTU0tM0aQE6mtgQjvUiQX4WQrWWKHHIDIY_CBYfH29ps0VE988PFbhxlT_9toy0wx4v2kP7R-iFrTI7nSFZ6Nkt_gpS6fjPu7tGOLMslYX-c8fj072tKlJ"/>
+                                </div>
+                                <div class="kb-item-details">
+                                    <h3 class="kb-item-title">Atomic
+                                        Habits</h3>
+                                    <p class="kb-item-author">James
+                                        Clear</p>
+                                    <div class="kb-item-price-quantity">
+                                                <span
+                                                        class="kb-item-price">210.000đ</span>
+                                        <span class="kb-item-quantity">x
+                                                    1</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kb-order-item">
+                                <div class="kb-item-image">
+                                    <img alt="Book cover of Deep Work"
+                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu8Owy3EA7jUs-paZ11Jxb5_0HITmBjX8Ji1LhTXJ8BEFRfY_ZA6AY8n0mIJVWv8nLuF0nMS3cFEboo106ivwJ6nEbgkihBwJVNUd-tSgy3IiI1DhAzfxhJBba_MimmP2QH6k625hkJRqjVU6voYzVGwavgiYHut88l2Fi6vLBBNu2F8CYaALU3ls3-wHrpFtOWRvn9ac_K8jkJnSaNJtDXaW3kgJQw98k_t61lvrZWKlgu0KidQU0hewrE_o50u-rDSgjJD1b0W8n"/>
+                                </div>
+                                <div class="kb-item-details">
+                                    <h3 class="kb-item-title">Deep
+                                        Work</h3>
+                                    <p class="kb-item-author">Cal
+                                        Newport</p>
+                                    <div class="kb-item-price-quantity">
+                                                <span
+                                                        class="kb-item-price">240.000đ</span>
+                                        <span class="kb-item-quantity">x
+                                                    1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kb-order-actions">
+                            <button class="kb-btn-action kb-btn-track">
+                                        <span
+                                                class="material-symbols-outlined">package_2</span>
+                                Track Order
+                            </button>
+                            <button
+                                    class="kb-btn-action kb-btn-secondary">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Order Card 3: Pending -->
+            <div class="kb-order-card kb-order-pending">
+                <div class="kb-order-header">
+                    <div class="kb-order-info">
+                        <div class="kb-order-info-item">
+                            <p>Order Placed</p>
+                            <p>Nov 14, 2023</p>
+                        </div>
+                        <div class="kb-order-info-item">
+                            <p>Order ID</p>
+                            <p>#ORD-99340</p>
+                        </div>
+                        <div class="kb-order-info-item kb-order-total">
+                            <p>Total</p>
+                            <p>120.000đ</p>
+                        </div>
+                    </div>
+                    <div class="kb-order-status-actions">
+                                <span class="kb-status-badge kb-status-pending">
+                                    <span
+                                            class="material-symbols-outlined">schedule</span>
+                                    Pending
+                                </span>
+                    </div>
+                </div>
+                <div class="kb-order-content">
+                    <div class="kb-order-body">
+                        <div class="kb-items-list">
+                            <div class="kb-order-item">
+                                <div class="kb-item-image">
+                                    <img
+                                            alt="Book cover of The Little Prince"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcXpBwEYmFPICB-RrFc3Gi8Jc0FoxO9YCLpwBXTEIlY0Rr2_-2YgBNhojt9h-pK_J3dsYahgQTfi7xB8qvH5N-6Yy5_6UlYemBoPmZSclbWBbtnzKXg_kUZCNqtPiXhvhJ-Ur5C0I4zohkPPDtV7LB7o6nCT0-MCBJE2Llb0T1xSh1NlFmbVWaTbWdgtBxlzJNa99aBglg5q8MwZm2xravDNtx9GN5_sTdO34LMCjHE74i2lX5p9U85vexAgHHJjRk9ZW8ChAIsgBL"/>
+                                </div>
+                                <div class="kb-item-details">
+                                    <h3 class="kb-item-title">The Little
+                                        Prince</h3>
+                                    <p class="kb-item-author">Antoine de
+                                        Saint-Exupéry</p>
+                                    <div class="kb-item-price-quantity">
+                                                <span
+                                                        class="kb-item-price">120.000đ</span>
+                                        <span class="kb-item-quantity">x
+                                                    1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kb-order-actions">
+                            <button
+                                    class="kb-btn-action kb-btn-secondary">
+                                View Details
+                            </button>
+                            <button class="kb-btn-cancel">
+                                Cancel Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

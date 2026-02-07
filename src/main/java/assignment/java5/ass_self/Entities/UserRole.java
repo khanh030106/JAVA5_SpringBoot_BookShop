@@ -13,12 +13,12 @@ public class UserRole {
     private UserRoleId id;
 
     @MapsId("userID")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "UserID", nullable = false)
     private User userID;
 
     @MapsId("roleID")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "RoleID", nullable = false)
     private Role roleID;
 

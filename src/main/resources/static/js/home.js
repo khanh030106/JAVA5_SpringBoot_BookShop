@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     /*----------------------------------------MENU-------------------------------------*/
     const menuBtn = document.getElementById("menuToggle");
     const menuCollapse = document.getElementById("menuCollapse");
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuBtn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenu);
+
     /*--------------------------------------------EXPAND CATEGORIES-------------------------------*/
     // Handle submenu toggle
     window.toggleSubmenu = function (event, submenuId) {
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     /*---------------------------------------------------------------------------------------------*/
-    document.querySelectorAll('.register-password-toggle').forEach(button => {
+    document.querySelectorAll('.password-toggle').forEach(button => {
         button.addEventListener('click', function () {
             const input = this.previousElementSibling;
             const icon = this.querySelector('.material-symbols-outlined');
@@ -49,10 +50,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     /*-------------------------------------------------------------------------------------------------*/
-    window.closeModal = function (){
+    window.closeModal = function () {
         const modal = document.getElementById("notifyModal");
         if (modal) {
             modal.style.display = "none";
         }
     }
+
+    const modal = document.getElementById("verifyModal");
+
+    if (modal) {
+        const status = modal.dataset.status;
+
+        const spinner = document.getElementById("verifySpinner");
+        const successBox = document.getElementById("verifySuccess");
+        const failBox = document.getElementById("verifyFail");
+
+        setTimeout(() => {
+            spinner.style.display = "none";
+
+            if (status === "success") {
+                successBox.style.display = "block";
+
+                setTimeout(() => {
+                    window.location.href = "/bookseller/login";
+                }, 2000);
+
+            } else {
+                failBox.style.display = "block";
+
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 2500);
+            }
+
+        }, 1500);
+    }
+
 });
+
+

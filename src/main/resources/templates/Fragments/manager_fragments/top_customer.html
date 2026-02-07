@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/manager/top_customer.css">
+    </th:block>
+</head>
+<body>
+<main>
+  <div class="container">
+    <div class="main-wrapper">
+      <div class="main-content">
+        <div class="content-container">
+          <div class="page-header">
+            <div class="header-text">
+              <h1>Top Customers Leaderboard</h1>
+              <p class="subtitle">Recognize and reward your most loyal customers based on their purchase history.</p>
+            </div>
+            <button class="export-btn">
+              <span class="material-symbols-outlined">download</span>
+              Export Report
+            </button>
+          </div>
+
+          <div class="controls-section">
+            <div class="search-wrapper">
+              <span class="search-icon material-symbols-outlined">search</span>
+              <input type="text" class="search-input" placeholder="Search by customer name, email or ID...">
+            </div>
+            <div class="segmented-control">
+              <button class="segment-btn">This Month</button>
+              <button class="segment-btn active">This Year</button>
+              <button class="segment-btn">All-time</button>
+            </div>
+          </div>
+
+          <div class="podium-section">
+            <div class="podium-card rank-2">
+              <div class="avatar-wrapper">
+                <div class="avatar-container silver">
+                  <div class="avatar-img" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2n_LAMFnhuc1yRA_XHRseQmQ8ek0-rO3Lv4NgJMwBYctDSLPXFwgfOXBjqimizfL-uFuHgjE1PnpMXfr-4awMas1Wo3avdinbub2J93L5JODtMAqbK-MzEcAr2KFuyeGkwvMFc4bAf3yNTOUg-1CCZDN3V4tMOrYbdOd3ijyeQdF6Zo6U6Bsp5BPIfg86pX-83T_7gMifQnAHYvBSCcxmPTdaEImwOQIkdjtdL_foCUDrROshaOOU8D-NKHmtfM1w9p8eNIt17SK3');"></div>
+                </div>
+                <div class="rank-badge silver">#2</div>
+              </div>
+              <div class="podium-content">
+                <h3 class="customer-name">Tran Thi B</h3>
+                <p class="customer-email">tranthib@example.com</p>
+                <div class="stats-box">
+                  <div class="stat-item">
+                    <p class="stat-label">Total Spend</p>
+                    <p class="stat-value">42.000.000 ₫</p>
+                  </div>
+                  <div class="stat-item right">
+                    <p class="stat-label">Orders</p>
+                    <p class="stat-value">120</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="podium-card rank-1">
+              <div class="crown-icon">
+                <span class="material-symbols-outlined" style="font-size: 2.5rem; font-variation-settings: 'FILL' 1;">crown</span>
+              </div>
+              <div class="avatar-wrapper gold">
+                <div class="avatar-container gold">
+                  <div class="avatar-img" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9uBtWFdrF6qM8bJTP7W6rXkloFUYxvB5kAAPzDIab9avWgeYRkfIxNSfjRmyrjiHGvMawdxuYPb17CuFoxuKAhZfJ2pmWBiJEZ5XqP8D-f9skRgWq6wEQIZBV7R9qtLu1HerViUcuDJ5nVIIcf8zPTdbE8QBhHV_75t0LdqkslBuY1sNaqoL0a2LSoI4gmW1ZxwgFKQVkPVF0xgnGIQy9vBbLXudmZQuc1ddYNq0R_j8dQdj2W4iCQreVbj1fsuH3hzmtANdiJEPh');"></div>
+                </div>
+                <div class="rank-badge gold">#1</div>
+              </div>
+              <div class="podium-content gold">
+                <h3 class="customer-name gold">Nguyen Van A</h3>
+                <p class="customer-email gold">nguyenvana@example.com</p>
+                <div class="stats-box gold">
+                  <div class="stat-item">
+                    <p class="stat-label gold">Total Spend</p>
+                    <p class="stat-value gold">50.000.000 ₫</p>
+                  </div>
+                  <div class="stat-item right">
+                    <p class="stat-label gold">Orders</p>
+                    <p class="stat-value gold">150</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="podium-card rank-3">
+              <div class="avatar-wrapper">
+                <div class="avatar-container bronze">
+                  <div class="avatar-img" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBN12NGjNdbK_pzuN-NB6YQYjwOBB4i21TS-QUJUmI5pKn5CHu8qlh7z2gRQPXBC8q_5ET9r2g-DEPsF79TFOV5PfRweBPbqY2BYTAGz68RKshUOxqGQcokgXvq-QufDvudiRc5YPvjEAkOC9vm9JcDg-xjMUE833bcdzhgGIWAEMIxxsE6hIfHXg8iS251rAok4dXJwr5EjhLyn7e9PpVqMnQxMVLZ-kDbyeCdM5mEnFIyH4y9k0PdFjdzzxPfxjhgkkfEuAOJ9IHD');"></div>
+                </div>
+                <div class="rank-badge bronze">#3</div>
+              </div>
+              <div class="podium-content">
+                <h3 class="customer-name">Le Van C</h3>
+                <p class="customer-email">levanc@example.com</p>
+                <div class="stats-box">
+                  <div class="stat-item">
+                    <p class="stat-label">Total Spend</p>
+                    <p class="stat-value">35.000.000 ₫</p>
+                  </div>
+                  <div class="stat-item right">
+                    <p class="stat-label">Orders</p>
+                    <p class="stat-value">90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-header">
+              <h3 class="table-title">Full Rankings</h3>
+              <div class="table-actions">
+                <button class="table-action-btn">
+                  <span class="material-symbols-outlined">filter_list</span>
+                </button>
+                <button class="table-action-btn">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </button>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Customer</th>
+                  <th class="center">Orders</th>
+                  <th class="right">Avg. Order</th>
+                  <th class="right">Total Spend</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>
+                    <span class="rank-number">04</span>
+                  </td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0Q1m3fGPtUHkmbuAt4DtVu-yreQkYCdfucjs2wjtY7eVhtVTnKYdPIUX4O-XH1hcGQ06sqrpPKGw4LGZY3lZslR_rXAZSx8W4nGltbOE9EF801fk4oS0i-EO5Dcuni97oH5aJVb_R5X9t9bYw2lOzJ1VLpAAW1FePceiAicKw8QoeVJzjNguEIS6F56Y7oTkhyVIIrhac2RKWHL_qM41MVgCcErB7GD9NefrBlrTMOSmjbvDjo4C7swv76csLvli33Clfx8rjZSNQ');"></div>
+                      <div class="customer-details">
+                        <span class="customer-details-name">Pham Minh D</span>
+                        <span class="customer-details-email">pminhd@email.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="center">
+                    <span class="order-badge">85</span>
+                  </td>
+                  <td class="right">347.058 ₫</td>
+                  <td class="right">
+                    <span class="total-spend">29.500.000 ₫</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="rank-number">05</span>
+                  </td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJeWjFH3z3H_pFAxPOntRMZEayC9IT8l0YwSIouwmd9qU602AZngGfozRoVpp_W3Bh1PThhELx6YiRwsg-6VdDCw3SC_vEE_fhDoCO8kCXiUsAEOdpNkQcK5MNOl7tHRF02OfRBGL1LmBs6HPuTqCKmBjH52hivIn1kw83ElHm5523PgGKgrnda4Y22ribTw43jxW7UfrdBE9Uq0DMYydfpQUyMHeQTPOYiBQtELSQYXMM-HOXlkqIY86cGN1K4Q2Qh_EN-l1PdVG8');"></div>
+                      <div class="customer-details">
+                        <span class="customer-details-name">Hoang Thi E</span>
+                        <span class="customer-details-email">hoange@email.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="center">
+                    <span class="order-badge">72</span>
+                  </td>
+                  <td class="right">361.111 ₫</td>
+                  <td class="right">
+                    <span class="total-spend">26.000.000 ₫</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="rank-number">06</span>
+                  </td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDa48_PWqrjbXQ1ezBvlBvQI80UeX73okYKwLAh6N16sxDwUojV6DRmf9l_hPLVinGO_0wSnYbyomYpAqpxf8Qpnc_kkYjXpr8BpNu2-q2uAwaKKSYelZDjKAJFwAlauiy4ZKrWs9EWZY6aH305sFgJSbptXDwB7WtsO_EVguB1b1bIdvSZnR0GM6_V5CNs4lBbQK-wczOwgtuTGnWKqChrd5E_lz3SQDrk_cBt2dAqGB4dnUN0R9w3_67ZaalO8YlCHvWHh8nHyBPj');"></div>
+                      <div class="customer-details">
+                        <span class="customer-details-name">Dang Van F</span>
+                        <span class="customer-details-email">dangf@email.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="center">
+                    <span class="order-badge">65</span>
+                  </td>
+                  <td class="right">369.230 ₫</td>
+                  <td class="right">
+                    <span class="total-spend">24.000.000 ₫</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="rank-number">07</span>
+                  </td>
+                  <td>
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl0-PqvKG8vvmouF1wCyGV5nV1aeEcUKRIyGNnBrfmfAGpl-TwmwkCyOcCJZmnhBibujThjjzgjseKzXONVz3Qg-Jm2gCfdqt9wS4VNipfihisfGUC8PnX6Lh9Y0qnb-S2iwULvuPx2jZfCiHDC6x7taYLtcaa53XSfb6HbZtqxPHOyg-bOTE2oWYqw3A4k67OKlLIJ1V92K3qEOvBfrZmpdU58JpbAsYo6atH0PedotSbTEAKRuou0uzUPPKCGER8yh3QvVQF5Nwy');"></div>
+                      <div class="customer-details">
+                        <span class="customer-details-name">Nguyen Thi G</span>
+                        <span class="customer-details-email">nguyeng@email.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="center">
+                    <span class="order-badge">58</span>
+                  </td>
+                  <td class="right">362.068 ₫</td>
+                  <td class="right">
+                    <span class="total-spend">21.000.000 ₫</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination-footer">
+              <p class="pagination-info">
+                Showing <strong>4</strong> to <strong>7</strong> of <strong>128</strong> customers
+              </p>
+              <div class="pagination-buttons">
+                <button class="pagination-btn" disabled>Previous</button>
+                <button class="pagination-btn">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

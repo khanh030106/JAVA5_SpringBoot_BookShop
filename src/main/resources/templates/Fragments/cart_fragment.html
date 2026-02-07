@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/cart.css">
+    </th:block>
+</head>
+<body>
+<main class="kb-main">
+    <div class="kb-grid">
+        <div class="kb-cart-items">
+            <div class="kb-cart-header">
+                <div>Product</div>
+                <div>Price</div>
+                <div>Quantity</div>
+                <div>Subtotal</div>
+            </div>
+
+            <div class="product-gird" th:if="${cartItems != null}" th:each="item : ${cartItems}">
+                <div class="kb-cart-item">
+                    <div class="kb-product-info">
+                        <div class="kb-product-image">
+                            <img th:src="@{|/images/book_images/${item.bookID.mainImage.imageURL}|}"
+                                    alt="">
+                        </div>
+                        <div class="kb-product-details">
+                            <h3 class="kb-product-title" th:text="${item.bookID.title}"></h3>
+                            <p class="kb-product-author" th:text="${item.bookID.authors.authorName}"></p>
+                            <p class="kb-product-publisher"th:text="${item.bookID.publisher}"></p>
+                            <button class="kb-remove-btn-mobile">
+                                        <span
+                                                class="material-icons-outlined">delete</span>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    <div class="kb-price-section">
+                        <span class="kb-section-label">Price:</span>
+                        <span class="kb-price" th:text="${#numbers.formatDecimal(item.bookID.price, 0, 'POINT', 0, 'POINT')}+'đ'"></span>
+                    </div>
+                    <div class="kb-quantity-section">
+                        <span class="kb-section-label">Quantity:</span>
+                        <div class="kb-quantity-control">
+                            <button class="kb-quantity-btn">-</button>
+                            <input type="text" class="kb-quantity-input"
+                                   th:value="${item.quantity}">
+                            <button class="kb-quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="kb-subtotal-section">
+                        <span class="kb-section-label">Subtotal:</span>
+                        <div class="kb-subtotal-content">
+                            <span class="kb-subtotal-price" th:text="${#numbers.formatDecimal(item.bookID.price*item.quantity, 0, 'POINT', 0, 'POINT')}+'đ'"></span>
+                            <button class="kb-remove-btn"
+                                    title="Remove item">
+                                        <span class="material-icons-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cart Item 2 -->
+
+            <a href="/bookseller/home" class="kb-continue-shopping">
+                <span class="material-icons-outlined">arrow_back</span>
+                Continue Shopping
+            </a>
+        </div>
+
+        <div class="kb-cart-summary">
+            <div class="kb-summary-card">
+                <h2 class="kb-summary-title">Cart Totals</h2>
+                <div class="kb-summary-details">
+                    <div class="kb-summary-row">
+                        <span>Subtotal</span>
+                        <span class="value">334.000đ</span>
+                    </div>
+                    <div class="kb-summary-row">
+                        <span>Shipping</span>
+                        <span class="small">Calculated at
+                                    checkout</span>
+                    </div>
+                    <div class="kb-summary-row">
+                        <span>Discount</span>
+                        <span class="discount">-0đ</span>
+                    </div>
+                </div>
+                <div class="kb-summary-total">
+                    <div class="kb-total-row">
+                        <span class="kb-total-label">Total</span>
+                        <span class="kb-total-price">334.000đ</span>
+                    </div>
+                    <p class="kb-vat-note">Including VAT</p>
+                </div>
+                <button class="kb-checkout-btn">Proceed to
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

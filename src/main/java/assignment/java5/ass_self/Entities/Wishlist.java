@@ -18,12 +18,12 @@ public class Wishlist {
     @MapsId("userID")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "UserID", nullable = false)
-    private User userID;
+    private User user;
 
     @MapsId("bookID")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "BookID", nullable = false)
-    private Book bookID;
+    private Book book;
 
     @ColumnDefault("sysdatetime()")
     @Column(name = "CreatedAt")

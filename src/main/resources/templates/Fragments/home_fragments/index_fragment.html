@@ -1,5 +1,5 @@
 <div  th:fragment="section_products_area">
-    <div class="title_and_see_more d-flex" style="margin-bottom: 20px;">
+    <div class="title_and_see_more d-flex" style="margin: 20px 0 0 25px;">
         <div class="title">
             <h3 th:text="${title_top_sold_out}"></h3>
             <small th:text="${subtitle_top_sold_out}"></small>
@@ -7,7 +7,7 @@
         <a hx-get="/bookseller/home/moreboook?type=topSoldOut"
            hx-target="#products_area"
            hx-swap="innerHTML"
-           hx-push-url="true" style="cursor: pointer;margin-left: 72%;">
+           hx-push-url="true" style="margin-left:73%;">
             Xem thêm
             <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -17,7 +17,7 @@
             <div class="product-card">
                 <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="product-link"></a>
                 <div class="product-image">
-                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL}|}" alt="">
+                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL != null ? item.mainImage.imageURL : 'default_book_image.jpg'}|}" alt="">
                     <span class="product-badge">Hot</span>
                     <a href="benefit_fragment.html" class="wishlist-btn">
                         <i class="bi bi-heart"></i>
@@ -26,6 +26,7 @@
                 <div class="product-body">
                     <h6 class="product-title"
                         th:text="${item.title != null && #strings.length(item.title) > 26 ? #strings.substring(item.title, 0, 22) + '...' : item.title}"></h6>
+                        <p class="small-authorName" th:text="${item.authors.authorName}"></p>
                     <p class="product-price"
                        th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')} + 'đ'">
                     </p>
@@ -39,7 +40,52 @@
             </div>
         </div>
     </div>
-    <div class="title_and_see_more d-flex" style="margin-bottom: 20px;">
+
+    <div class="title_and_see_more d-flex" style="margin: 20px 0 0 25px;">
+        <div class="title">
+            <h3 th:text="${title_promotion_books}"></h3>
+            <small th:text="${subtitle_promotion_books}"></small>
+        </div>
+        <a hx-get="/bookseller/home/moreboook?type=promtionBooks"
+           hx-target="#products_area"
+           hx-swap="innerHTML"
+           hx-push-url="true" style="margin-left:73%;">
+            Xem thêm
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+    <div class="products_gird">
+        <div th:each="item : ${promotionBooks}" class="products_card">
+            <div class="product-card">
+                <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="product-link"></a>
+                <div class="product-image">
+                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL != null ? item.mainImage.imageURL : 'default_book_image.jpg'}|}" alt="">
+                    <span class="product-badge">Khuyến mãi</span>
+                    <a href="benefit_fragment.html" class="wishlist-btn">
+                        <i class="bi bi-heart"></i>
+                    </a>
+                </div>
+                <div class="product-body">
+                    <h6 class="product-title"
+                        th:text="${item.title != null && #strings.length(item.title) > 26 ? #strings.substring(item.title, 0, 22) + '...' : item.title}"></h6>
+                    <p class="small-authorName" th:text="${item.authors.authorName}"></p>
+                    <p class="product-price"
+                       th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')} + 'đ'">
+                    </p>
+                    <div class="product-meta">
+                        <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="buy_now">Mua ngay</a>
+                        <a href="index_fragment.html" class="add-cart">
+                            <i class="material-icons">add_shopping_cart</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="title_and_see_more d-flex" style="margin: 50px 0 0 25px;">
         <div class="title">
             <h3 th:text="${title_all_books}"></h3>
             <small th:text="${subtitle_all_books}"></small>
@@ -53,11 +99,11 @@
         </a>
     </div>
     <div class="products_gird">
-        <div th:each="item : ${find30Books}" class="products_card">
+        <div th:each="item : ${find20Books}" class="products_card">
             <div class="product-card">
                 <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="product-link"></a>
                 <div class="product-image">
-                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL}|}" alt="">
+                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL != null ? item.mainImage.imageURL : 'default_book_image.jpg'}|}" alt="">
                     <a href="benefit_fragment.html" class="wishlist-btn">
                         <i class="bi bi-heart"></i>
                     </a>
@@ -65,6 +111,7 @@
                 <div class="product-body">
                     <h6 class="product-title"
                         th:text="${item.title != null && #strings.length(item.title) > 26 ? #strings.substring(item.title, 0, 22) + '...' : item.title}"></h6>
+                    <p class="small-authorName" th:text="${item.authors.authorName}"></p>
                     <p class="product-price"
                        th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')} + 'đ'">
                     </p>

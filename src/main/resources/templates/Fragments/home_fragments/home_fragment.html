@@ -1,7 +1,7 @@
 <div th:fragment="content">
     <div class="title_and_filters d-flex justify-content-between align-items-center">
-        <div class="title">
-            <h3 th:text="${title}"></h3>
+        <div class="title" style="margin:20px 0 0 25px;">
+            <h3 th:text="${title}" ></h3>
             <small th:text="${subtitle}"></small>
         </div>
         <div class="filter" >
@@ -19,7 +19,7 @@
                 </select>
                 <select name="category">
                     <option value="">Lọc theo loại sách</option>
-                    <option th:each="item : ${categories}" th:text="${item.categoryName}" th:value="${item.categoryName}"></option>
+                    <option th:each="item : ${categories}" th:text="${item.categoryName}" th:value="${item.id}"></option>
                 </select>
                 <select name="author">
                     <option value="">Lọc theo tác giả</option>
@@ -33,7 +33,7 @@
             <div class="product-card">
                 <a th:href="@{/bookseller/detail/{id}(id=${item.id})}" class="product-link"></a>
                 <div class="product-image">
-                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL}|}" alt="">
+                    <img th:src="@{|/images/book_images/${item.mainImage.imageURL != null ? item.mainImage.imageURL : 'default_book_image.jpg'}|}" alt="">
                     <a href="benefit_fragment.html" class="wishlist-btn">
                         <i class="bi bi-heart"></i>
                     </a>
@@ -41,6 +41,7 @@
                 <div class="product-body">
                     <h6 class="product-title"
                         th:text="${item.title != null && #strings.length(item.title) > 26 ? #strings.substring(item.title, 0, 22) + '...' : item.title}"></h6>
+                    <p class="small-authorName" th:text="${item.authors.authorName}"></p>
                     <p class="product-price"
                        th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 0, 'POINT')} + 'đ'">
                     </p>
@@ -53,5 +54,50 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div th:if="${totalPages > 1}">
+        <ul class="pagination justify-content-center">
+
+            <!-- Previous -->
+            <li class="page-item"
+                th:classappend="${currentPage == 0} ? 'disabled' : ''">
+
+                <a class="page-link"
+                   th:attr="hx-get=@{/bookseller/home/moreboook(type=${type}, index=${currentPage - 1})}"
+                   hx-target="#products_area"
+                   hx-swap="innerHTML"
+                   hx-push-url="true">
+                    Previous
+                </a>
+            </li>
+
+            <!-- Pages -->
+            <li class="page-item"
+                th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? 'active' : ''">
+
+                <a class="page-link"
+                   th:attr="hx-get=@{/bookseller/home/moreboook(type=${type}, index=${i})}"
+                   hx-target="#products_area"
+                   hx-swap="innerHTML"
+                   hx-push-url="true"
+                   th:text="${i + 1}">
+                </a>
+            </li>
+
+            <!-- Next -->
+            <li class="page-item"
+                th:classappend="${currentPage == totalPages - 1} ? 'disabled' : ''">
+
+                <a class="page-link"
+                   th:attr="hx-get=@{/bookseller/home/moreboook(type=${type}, index=${currentPage + 1})}"
+                   hx-target="#products_area"
+                   hx-swap="innerHTML"
+                   hx-push-url="true">
+                    Next
+                </a>
+            </li>
+
+        </ul>
     </div>
 </div>

@@ -156,6 +156,7 @@
     font-size: 1.875rem;
     font-weight: 700;
     letter-spacing: -0.025em;
+    font-family: 'Manrope', sans-serif;
 }
 
 .bl-form-subtitle {
@@ -205,29 +206,33 @@ label {
     position: relative;
 }
 
-input[type="email"],
-input[type="password"] {
-    display: flex;
+.login-input{
+    display: block;
     width: 100%;
-    border-radius: 0.5rem;
-    border: 1px solid #e6dbdb;
-    background-color: white;
-    color: #181111;
     height: 48px;
     padding: 0 1rem;
-    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    border: 1px solid #e6dbdb;
+    font-size: 0.875rem;
+    color: #181111;
     transition: all 0.2s;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
 
-input::placeholder {
-    color: rgba(140, 96, 95, 0.6);
+.login-input::placeholder{
+    color: rgba(140, 96, 95, 0.5);
 }
 
-input:focus {
+.login-input:focus{
     outline: none;
     border-color: #bc0c06;
-    box-shadow: 0 0 0 2px rgba(188, 12, 6, 0.2);
+    box-shadow: 0 0 0 1px #bc0c06;
+}
+
+.validation-message{
+    margin: 0 0 -3px 3px;
+    color: red;
 }
 
 .bl-input-icon {
@@ -243,28 +248,14 @@ input:focus {
     font-size: 20px;
 }
 
-.bl-password-toggle {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #8c605f;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transition: color 0.2s;
-    padding: 0;
-    display: flex;
-    align-items: center;
+.password-toggle:hover {
+    color: #181111;
 }
 
-.bl-password-toggle:hover {
-    color: #bc0c06;
-}
-
-.bl-password-toggle .material-symbols-outlined {
+.password-toggle .material-symbols-outlined {
     font-size: 20px;
 }
+
 
 /* Submit Button */
 .bl-submit-button {
@@ -320,8 +311,6 @@ input:focus {
 /* Social Login */
 .bl-social-login {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
 }
 
 .bl-social-button {

@@ -11,7 +11,7 @@ main {
 
 @media (min-width: 1024px) {
     main {
-        padding: 50px 150px 20px 150px;
+        padding: 50px 125px 20px 105px;
     }
 }
 
@@ -525,7 +525,7 @@ main {
     position: relative;
     width: 18rem;
     background: #fff;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: all 0.3s ease;
@@ -542,22 +542,6 @@ main {
 }
 
 /* WISHLIST */
-.wishlist-btn{
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 30;
-    cursor: pointer;
-}
-
 .wishlist-btn:hover{
     background: #ef4444;
     color: #fff;
@@ -638,18 +622,6 @@ main {
     background-color: #ef2121;
     transform: scale(1.03);
     transition: all ease-in-out 0.3s;
-}
-.add-cart {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #e9e9e9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #111;
-    transition: all 0.25s ease;
-    z-index: 30;
 }
 
 .add-cart:hover {

@@ -28,27 +28,30 @@
             </div>
 
             <!-- Form Section -->
-            <form class="register-form" th:action="@{/bookseller/register}" method="post">
+            <form class="register-form" th:action="@{/bookseller/register}" method="post" th:object="${request}">
                 <!-- Full Name -->
                 <div class="register-form-group">
                     <label for="fullname" class="register-label">Họ và tên</label>
                     <div class="register-input-wrapper">
-                        <input type="text" id="fullname" name="fullname" class="register-input" placeholder="Nhập họ tên đầy đủ">
+                        <input type="text" id="fullname" th:field="*{fullname}" class="register-input" placeholder="Nhập họ tên đầy đủ">
                         <div class="register-input-icon">
                             <span class="material-symbols-outlined">person</span>
                         </div>
                     </div>
+                    <p th:if="${#fields.hasErrors('fullname')}" class="validation-message" th:errors="*{fullname}"></p>
                 </div>
 
                 <!-- Email -->
                 <div class="register-form-group">
                     <label for="email" class="register-label">Email</label>
                     <div class="register-input-wrapper">
-                        <input type="email" id="email" name="email" class="register-input" placeholder="example@email.com">
+                        <input type="email" id="email" th:field="*{email}" class="register-input" placeholder="example@email.com">
                         <div class="register-input-icon">
                             <span class="material-symbols-outlined">mail</span>
                         </div>
                     </div>
+                    <p th:if="${#fields.hasErrors('email')}" class="validation-message" th:errors="*{email}"></p>
+                    <p class="validation-message" th:if="${existEmail}" th:text="${existEmail}"></p>
                 </div>
 
                 <!-- Row: Gender & Date of Birth -->
@@ -56,7 +59,7 @@
                     <!-- Gender -->
                     <div class="register-form-group">
                         <label for="gender" class="register-label">Giới tính</label>
-                        <select id="gender" name="gender" class="register-select">
+                        <select id="gender" th:field="*{gender}" class="register-select">
                             <option value="Nam">Nam</option>
                             <option value="Nữ">Nữ</option>
                             <option value="Khác">Khác</option>
@@ -67,11 +70,12 @@
                     <div class="register-form-group">
                         <label for="dob" class="register-label">Ngày sinh</label>
                         <div class="register-input-wrapper">
-                            <input type="date" id="dob" name="dob" class="register-input register-date-input">
+                            <input type="date" id="dob" th:field="*{dob}" class="register-input register-date-input">
                             <div class="register-calendar-icon">
                                 <span class="material-symbols-outlined">calendar_month</span>
                             </div>
                         </div>
+                        <p th:if="${#fields.hasErrors('dob')}" class="validation-message" th:errors="*{dob}"></p>
                     </div>
                 </div>
 
@@ -79,22 +83,25 @@
                 <div class="register-form-group">
                     <label for="password" class="register-label">Mật khẩu</label>
                     <div class="register-input-wrapper">
-                        <input type="password" id="password" name="password" class="register-input" placeholder="Tối thiểu 8 ký tự">
-                        <button type="button" class="register-password-toggle" >
+                        <input type="password" id="password" th:field="*{password}" class="register-input" placeholder="Tối thiểu 8 ký tự">
+                        <button type="button" class="password-toggle" >
                             <span class="material-symbols-outlined">visibility_off</span>
                         </button>
                     </div>
+                    <p th:if="${#fields.hasErrors('password')}" class="validation-message" th:errors="*{password}"></p>
                 </div>
 
                 <!-- Confirm Password -->
                 <div class="register-form-group">
                     <label for="confirm_password" class="register-label">Xác nhận mật khẩu</label>
                     <div class="register-input-wrapper">
-                        <input type="password" id="confirm_password" name="confirm_password" class="register-input" placeholder="Nhập lại mật khẩu">
-                        <button type="button" class="register-password-toggle">
+                        <input type="password" id="confirm_password" th:field="*{confirm_password}" class="register-input" placeholder="Nhập lại mật khẩu">
+                        <button type="button" class="password-toggle">
                             <span class="material-symbols-outlined">visibility_off</span>
                         </button>
                     </div>
+                    <p th:if="${#fields.hasErrors('confirm_password')}" class="validation-message" th:errors="*{confirm_password}"></p>
+                    <p class="validation-message" th:if="${confirmPasswordError}" th:text="${confirmPasswordError}"></p>
                 </div>
 
                 <!-- Terms Checkbox -->
@@ -110,25 +117,6 @@
                     Đăng ký ngay
                 </button>
             </form>
-            <!-- Social Login -->
-            <div class="register-social-login">
-                <button type="button" class="register-social-button">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12.0003 20.45c4.6667 0 8.45-3.7833 8.45-8.45 0-4.6667-3.7833-8.45-8.45-8.45-4.6667 0-8.45 3.7833-8.45 8.45 0 4.6667 3.7833 8.45 8.45 8.45Z" fill="#fff" fill-opacity="0" stroke="none"></path>
-                        <path d="M20.1018 10.1654h-8.1014v3.6846h4.6322c-.1996 1.0776-.8072 1.99-1.7207 2.602l2.7845 2.1604c1.6293-1.5005 2.569-3.709 2.569-6.2846 0-.6163-.0553-1.2202-.1636-1.8024l-.0004-.3599Z" fill="#4285F4"></path>
-                        <path d="M12.0004 18.45c2.279 0 4.1906-.7555 5.5862-2.044l-2.7845-2.1604c-.756.5065-1.723.806-2.8017.806-2.199 0-4.0624-1.4854-4.7265-3.482l-2.8776 2.2312c1.4187 2.8166 4.316 4.6492 7.604 4.6492l.0001-.0001Z" fill="#34A853"></path>
-                        <path d="M7.2739 11.5696c-.1716-.514-.2696-1.0623-.2696-1.63 0-.5678.098-1.116.2696-1.63l-2.8776-2.2312C3.6053 7.6473 3.12 9.227 3.12 10.9396c0 1.7126.4853 3.2923 1.2764 4.8612l2.8775-2.2312Z" fill="#FBBC05"></path>
-                        <path d="M12.0004 6.3804c1.2393 0 2.352.426 3.2266 1.261l2.4173-2.4173C16.1866 3.9056 14.275 3.03 12.0004 3.03 8.7124 3.03 5.815 4.8626 4.3963 7.6792l2.8776 2.2312c.664-1.9966 2.5275-3.482 4.7265-3.482v-.048Z" fill="#EB4335"></path>
-                    </svg>
-                    <span>Google</span>
-                </button>
-                <button type="button" class="register-social-button">
-                    <svg fill="currentColor" viewBox="0 0 24 24" style="color: #1877F2;">
-                        <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
-                    </svg>
-                    <span>Facebook</span>
-                </button>
-            </div>
 
             <!-- Footer Link -->
             <div class="register-footer-link">
@@ -144,24 +132,39 @@
     </div>
     <div id="notifyModal"
          class="modal-overlay"
-         th:if="${success != null or error != null}">
+         th:if="${success != null}">
 
-        <div class="modal" style="display: flex; flex-direction: column; margin-left: 38%">
+        <div class="modal" style="display: flex; flex-direction: column;margin: 15% 0 0 38%;">
             <div th:if="${success != null}">
-                <div class="modal-icon success">✓</div>
+                <div class="modal-icon success"><i class="fa-solid fa-circle-check"></i></div>
                 <h2>Đã gửi email xác nhận</h2>
                 <p>Vui lòng kiểm tra email để kích hoạt tài khoản.</p>
             </div>
-
-            <div th:if="${error != null}">
-                <div class="modal-icon error">✕</div>
-                <h2>Đăng ký thất bại</h2>
-                <p th:text="${error}"></p>
-            </div>
-
             <button onclick="closeModal()">Đóng</button>
         </div>
     </div>
+    <div id="verifyModal"
+         class="modal-overlay"
+         th:if="${verify != null}"
+         th:data-status="${verify}">
+
+        <div class="modal" style="display:flex;flex-direction: column;margin: 15% 0 0 38%; height: 260px;">
+            <div class="spinner" id="verifySpinner"></div>
+
+            <div id="verifySuccess" style="display: none">
+                <div class="modal-icon success"><i class="fa-solid fa-circle-check"></i></div>
+                <h2>Xác nhận thành công</h2>
+                <p>Đang chuyển sang trang đăng nhập...</p>
+            </div>
+
+            <div id="verifyFail" style="display: none">
+                <div class="modal-icon error"><i class="fa-solid fa-circle-xmark"></i></div>
+                <h2>Xác nhận thất bại</h2>
+                <p>Link không hợp lệ hoặc đã hết hạn</p>
+            </div>
+        </div>
+    </div>
+
 
 </main>
 </body>

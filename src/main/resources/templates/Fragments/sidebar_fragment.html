@@ -38,13 +38,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/orders">
                             <span class="material-icons-outlined">shopping_cart</span>
                             <span class="nav-link-text">Đơn hàng</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/wishlist">
                             <span class="material-icons-outlined">favorite</span>
                             <span class="nav-link-text">Yêu thích</span>
                         </a>
@@ -52,29 +52,29 @@
                 </ul>
             </div>
 
-            <th:block class="nav-section">
+            <th:block class="nav-section" th:if="${T(assignment.java5.ass_self.util.IsLogin).isAdmin()}">
                 <h3 class="section-title">Quản lý</h3>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/admin/categories">
                             <span class="material-icons-outlined">category</span>
-                            <span class="nav-link-text">Loại hàng</span>
+                            <span class="nav-link-text">Loại sách</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/admin/books">
                             <span class="material-icons-outlined">inventory_2</span>
-                            <span class="nav-link-text">Hàng hóa</span>
+                            <span class="nav-link-text">Sách</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/admin/users">
                             <span class="material-icons-outlined">group</span>
                             <span class="nav-link-text">Người dùng</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/admin/orders">
                             <span class="material-icons-outlined">receipt_long</span>
                             <span class="nav-link-text">Đơn hàng</span>
                         </a>
@@ -86,7 +86,7 @@
                 <h3 class="section-title">Thông tin</h3>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/bookseller/profile">
                             <span class="material-icons-outlined">person_outline</span>
                             <span class="nav-link-text">Tài khoản</span>
                         </a>
@@ -105,17 +105,36 @@
                     </li>
                 </ul>
             </div>
+            <th:block class="nav-section" th:if="${T(assignment.java5.ass_self.util.IsLogin).isAdmin()}">
+                <h3 class="section-title">Thống kê</h3>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bookseller/admin/revenue">
+                            <span class="material-icons-outlined">paid</span>
+                            <span class="nav-link-text">Doanh thu</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bookseller/admin/topCustomers">
+                            <span class="material-icons-outlined">emoji_events</span>
+                            <span class="nav-link-text">Top khách hàng</span>
+                        </a>
+                    </li>
+                </ul>
+            </th:block>
         </div>
 
         <div class="sidebar-footer">
             <div class="user-card">
                 <div class="user-avatar-wrapper">
-                    <img alt="Michael Gabson Profile Picture" class="user-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqsE8frSlAuVVptbn17_Wkc5oNpA0GH38mrEbOa5dM7OBTTV4mcYQoaqb3CHtlUXXGiP7fTwEivliXlWncvqoVjPFMnTUOlxXLf_fqYBbOlf4X_iHJfk-0zox6xfTKyy2TGI8t2HypVTvUf3Q6smzCSE2nclrJVVEFtfcLfQEednpauGluK2s1NbntD8oSqNnhxo16QxBZjyG8DOz_dqW6pySoRRT_He4_cw4zc71LwgQdvdrzVudl17wfONWqR4k3woHW8UI1LQ"/>
+                    <img alt="User Profile Picture" class="user-avatar"
+                         th:src="${currentUser != null && currentUser.avatar != null ? (currentUser.avatar.startsWith('http') ? currentUser.avatar : '/images/UserImages/' + currentUser.avatar)
+                         : '/images/UserImages/default_avatar.jpg'}"/>
                     <span class="user-status"></span>
                 </div>
-                <div class="user-info">
-                    <p class="user-name">Michael Gabson</p>
-                    <p class="user-email">michael@gmail.com</p>
+                <div class="user-info" th:if="${currentUser != null}">
+                    <p class="user-name" th:text="${currentUser.fullName}"></p>
+                    <p class="user-email" th:text="${currentUser.email}"></p>
                 </div>
                 <span class="material-icons-outlined">chevron_right</span>
             </div>

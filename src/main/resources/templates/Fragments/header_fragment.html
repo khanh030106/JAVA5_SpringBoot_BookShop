@@ -20,9 +20,14 @@
         </button>
     </div>
     <ul class="login_and_cart">
-        <li><a href="/bookseller/login" class="login">Login</a></li>
+        <li th:if="${!T(assignment.java5.ass_self.util.IsLogin).isAuthenticated()}"><a href="/bookseller/login" class="login">Login</a></li>
+        <th:block th:if="${T(assignment.java5.ass_self.util.IsLogin).isAuthenticated()}">
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" class="logout">Logout</button>
+            </form>
+        </th:block>
         <li style="margin: -3px 0 0 5px;">
-            <a href="#" class="cart">
+            <a th:href="@{/bookseller/cart}" class="cart">
                 <i class="bi bi-cart2"></i>
                 Cart
             </a>

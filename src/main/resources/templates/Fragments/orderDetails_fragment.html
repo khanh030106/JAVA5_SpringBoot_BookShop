@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/orderDetails.css">
+    </th:block>
+</head>
+<body>
+<div class="kb-od-container">
+    <!-- Main Content -->
+    <main class="kb-od-main">
+        <div class="kb-od-content">
+            <!-- Header Section -->
+            <div class="kb-od-page-header">
+                <div>
+                    <h1 class="kb-od-page-title">Order Details</h1>
+                </div>
+                <div class="kb-od-header-actions">
+                    <button class="kb-od-btn kb-od-btn-secondary">
+                                <span
+                                        class="material-symbols-outlined">download</span>
+                        Invoice
+                    </button>
+                    <button class="kb-od-btn kb-od-btn-primary">
+                                <span
+                                        class="material-symbols-outlined">local_shipping</span>
+                        Track Order
+                    </button>
+                </div>
+            </div>
+
+            <!-- Order Status Stepper -->
+            <section class="kb-od-status-card">
+                <h3 class="kb-od-section-title">Order Status</h3>
+                <div class="kb-od-stepper-container">
+                    <!-- Progress Bar Background -->
+                    <div class="kb-od-progress-bg"></div>
+                    <!-- Active Progress -->
+                    <div class="kb-od-progress-active"
+                         style="width: 75%;"></div>
+                    <div class="kb-od-stepper-steps">
+                        <!-- Step 1: Placed -->
+                        <div class="kb-od-step kb-od-step-completed">
+                            <div class="kb-od-step-icon">
+                                        <span
+                                                class="material-symbols-outlined kb-od-icon-filled">check</span>
+                            </div>
+                            <div class="kb-od-step-content">
+                                        <span
+                                                class="kb-od-step-label">Placed</span>
+                                <span class="kb-od-step-date">Oct
+                                            24</span>
+                            </div>
+                        </div>
+                        <!-- Step 2: Confirmed -->
+                        <div class="kb-od-step kb-od-step-completed">
+                            <div class="kb-od-step-icon">
+                                        <span
+                                                class="material-symbols-outlined kb-od-icon-filled">check</span>
+                            </div>
+                            <div class="kb-od-step-content">
+                                        <span
+                                                class="kb-od-step-label">Confirmed</span>
+                                <span class="kb-od-step-date">Oct
+                                            25</span>
+                            </div>
+                        </div>
+                        <!-- Step 3: Shipped (Current) -->
+                        <div class="kb-od-step kb-od-step-active">
+                            <div
+                                    class="kb-od-step-icon kb-od-step-icon-active">
+                                        <span
+                                                class="material-symbols-outlined kb-od-icon-filled">local_shipping</span>
+                            </div>
+                            <div class="kb-od-step-content">
+                                        <span
+                                                class="kb-od-step-label kb-od-label-active">Shipped</span>
+                                <span class="kb-od-step-date">Oct
+                                            26</span>
+                            </div>
+                        </div>
+                        <!-- Step 4: Delivered -->
+                        <div class="kb-od-step kb-od-step-pending">
+                            <div
+                                    class="kb-od-step-icon kb-od-step-icon-pending">
+                                        <span
+                                                class="material-symbols-outlined">home</span>
+                            </div>
+                            <div class="kb-od-step-content">
+                                        <span
+                                                class="kb-od-step-label kb-od-label-pending">Delivered</span>
+                                <span
+                                        class="kb-od-step-date kb-od-date-pending">Est.
+                                            Oct 28</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Layout Grid -->
+            <div class="kb-od-grid">
+                <!-- Left Column: Details -->
+                <div class="kb-od-col-left">
+                    <!-- Order Items List -->
+                    <section class="kb-od-items-card">
+                        <div class="kb-od-items-header">
+                            <h3 class="kb-od-items-title">Items in Order
+                                (2)</h3>
+                            <span class="kb-od-status-badge">In
+                                        Transit</span>
+                        </div>
+                        <div class="kb-od-items-list">
+                            <!-- Item 1 -->
+                            <div class="kb-od-item">
+                                <div class="kb-od-item-image">
+                                    <img
+                                            alt="Book cover of Rich Dad Poor Dad"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo8VK6ZaqyrD9oZ59gy-iW827tp5Nqo80kUsrB17Dh3P7stsuMMNmcxhn0xy5QDNzhxhL57Oz3CfRY9-mSBwmC3P-fDyOZUWMdKKrwpyzod04Xw6Kz9XTG4FR_CtbxvXvDQPYQqM_sn9GuH6dZwJhfX8NGCWUb0f3LpDi3UQ7A72VJ-mpC5hYT-0pGuPi0MG7V4SGr1RS5b30-gR3Vv6gVpIbcTWxvBn336-gomdQipw_91Gez7xot9hqEigjVlCWiSti1wyh07aDf" />
+                                </div>
+                                <div class="kb-od-item-details">
+                                    <div class="kb-od-item-info">
+                                        <div>
+                                            <h4
+                                                    class="kb-od-item-title">Rich
+                                                Dad Poor Dad</h4>
+                                            <p
+                                                    class="kb-od-item-author">Robert
+                                                Kiyosaki</p>
+                                            <div
+                                                    class="kb-od-item-format">Paperback
+                                                • English</div>
+                                        </div>
+                                        <div
+                                                class="kb-od-item-price-box">
+                                            <p
+                                                    class="kb-od-item-price">$18.00</p>
+                                            <p
+                                                    class="kb-od-item-qty">Qty:
+                                                1</p>
+                                        </div>
+                                    </div>
+                                    <div class="kb-od-item-actions">
+                                        <button
+                                                class="kb-od-item-action kb-od-action-primary">Write
+                                            a Review</button>
+                                        <button
+                                                class="kb-od-item-action kb-od-action-secondary">Buy
+                                            Again</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="kb-od-item">
+                                <div class="kb-od-item-image">
+                                    <img
+                                            alt="Book cover of Atomic Habits"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMxCZQ8Ah8QF8jbspC-w16oenoUEsYxh-nKizbmBAAz8XUXcqUdSog2XUXsG1rDbtGvXqg3rHfrAQWtx7mnHpXoAs6omRHWRZi7LvYoWO9llwWZM-bJvv3acpN-kPrTp4MdDS4YNcZ3KemAR6D3Duo_4agEceRFFRuWY04FDeCseIesyVsThgLM-n30FCIjXlrCOZ3Gza3bHISMDfhv_ov33ZDIG67rsPwR9fXQTlxgv0tB1DMUUSe3Cl42o_0EXm-HqAdfV5wZ8Vi" />
+                                </div>
+                                <div class="kb-od-item-details">
+                                    <div class="kb-od-item-info">
+                                        <div>
+                                            <h4
+                                                    class="kb-od-item-title">Atomic
+                                                Habits</h4>
+                                            <p
+                                                    class="kb-od-item-author">James
+                                                Clear</p>
+                                            <div
+                                                    class="kb-od-item-format">Hardcover
+                                                • English</div>
+                                        </div>
+                                        <div
+                                                class="kb-od-item-price-box">
+                                            <p
+                                                    class="kb-od-item-price">$22.00</p>
+                                            <p
+                                                    class="kb-od-item-qty">Qty:
+                                                1</p>
+                                        </div>
+                                    </div>
+                                    <div class="kb-od-item-actions">
+                                        <button
+                                                class="kb-od-item-action kb-od-action-primary">Write
+                                            a Review</button>
+                                        <button
+                                                class="kb-od-item-action kb-od-action-secondary">Buy
+                                            Again</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column: Sidebar info -->
+                <div class="kb-od-col-right">
+                    <!-- Delivery Address -->
+                    <div class="kb-od-info-card">
+                        <div class="kb-od-info-header">
+                            <div
+                                    class="kb-od-info-icon kb-od-icon-location">
+                                        <span
+                                                class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <h3 class="kb-od-info-title">Delivery
+                                Address</h3>
+                        </div>
+                        <div class="kb-od-info-content">
+                            <p class="kb-od-address-name">Jane Doe</p>
+                            <p class="kb-od-address-details">
+                                123 Library Lane, Apt 4B<br />
+                                Booktown, NY 10012<br />
+                                United States
+                            </p>
+                            <p class="kb-od-address-phone">+1 (555)
+                                123-4567</p>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="kb-od-info-card">
+                        <div class="kb-od-info-header">
+                            <div
+                                    class="kb-od-info-icon kb-od-icon-payment">
+                                        <span
+                                                class="material-symbols-outlined">credit_card</span>
+                            </div>
+                            <h3 class="kb-od-info-title">Payment
+                                Method</h3>
+                        </div>
+                        <div class="kb-od-info-content">
+                            <div class="kb-od-payment-box">
+                                        <span
+                                                class="material-symbols-outlined kb-od-payment-icon">payments</span>
+                                <div class="kb-od-payment-details">
+                                            <span
+                                                    class="kb-od-payment-card">Visa
+                                                ending in 4242</span>
+                                    <span class="kb-od-payment-exp">Exp:
+                                                12/25</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="kb-od-info-card">
+                        <h3 class="kb-od-summary-title">Order
+                            Summary</h3>
+                        <div class="kb-od-summary-items">
+                            <div class="kb-od-summary-row">
+                                <span>Subtotal (2 items)</span>
+                                <span
+                                        class="kb-od-summary-value">$40.00</span>
+                            </div>
+                            <div class="kb-od-summary-row">
+                                <span>Shipping Fee</span>
+                                <span
+                                        class="kb-od-summary-value">$5.00</span>
+                            </div>
+                            <div class="kb-od-summary-row">
+                                <span>Tax</span>
+                                <span
+                                        class="kb-od-summary-value">$3.20</span>
+                            </div>
+                            <div
+                                    class="kb-od-summary-row kb-od-discount">
+                                <span>Discount (FALL23)</span>
+                                <span
+                                        class="kb-od-summary-value">-$3.20</span>
+                            </div>
+                            <div class="kb-od-summary-total">
+                                        <span class="kb-od-total-label">Total
+                                            Amount</span>
+                                <span
+                                        class="kb-od-total-amount">$45.00</span>
+                            </div>
+                        </div>
+                        <div class="kb-od-summary-footer">
+                            <p class="kb-od-help-text">
+                                Need help? <a class="kb-od-help-link"
+                                              href="#">Contact Support</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

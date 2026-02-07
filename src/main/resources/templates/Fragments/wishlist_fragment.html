@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/wishlist.css">
+    </th:block>
+</head>
+<body>
+<div class="kb-wl-container">
+    <main class="kb-wl-main">
+        <div class="kb-wl-content">
+            <!-- Page Heading & Summary -->
+            <div class="kb-wl-page-header">
+                <div class="kb-wl-header-left">
+                    <h1 class="kb-wl-page-title">My Wishlist</h1>
+                </div>
+                <div class="kb-wl-header-actions">
+                    <button class="kb-wl-btn kb-wl-btn-secondary">
+                                <span class="material-symbols-outlined">delete</span>
+                        <span>Clear List</span>
+                    </button>
+                    <button class="kb-wl-btn kb-wl-btn-primary">
+                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                        <span>Add all to cart</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Books Grid -->
+            <div class="kb-wl-grid">
+                <!-- Card 1 -->
+                <div class="kb-wl-card">
+                    <div class="kb-wl-fav-btn-wrapper">
+                        <button class="kb-wl-fav-btn kb-wl-fav-active">
+                                    <span class="material-symbols-outlined kb-wl-icon-filled">favorite</span>
+                        </button>
+                    </div>
+                    <div class="kb-wl-image-wrapper">
+                        <div class="kb-wl-image"
+                             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrfU94AsWf4LBVgdSWN782Aa0tow1mIQ-LA0HyCA8aVX41_7s-khAXqffRID1nwMfjowsEt1u3w7zGsyXmt5Tymt8O5OnAQpQ2TBKhZlfS82hs3Vt7BIrobKR-04mxp_8iF6s-JVbefHkx9X2RbvDYG9iKPCkqRyCzxQXzBnL-O8iSjHq0PySmqb-78U3M6yZxHIoitfqhWev4yVul1lygY-fOnfiNVdm63FCncXPbZMENh8fwJXLMicko2Cwr4fYQZVPTWmES4c9Z");'></div>
+                        <div class="kb-wl-badge kb-wl-badge-green">In
+                            Stock</div>
+                    </div>
+                    <div class="kb-wl-card-content">
+                        <div class="kb-wl-card-info">
+                            <h3 class="kb-wl-book-title">The Great
+                                Gatsby</h3>
+                            <p class="kb-wl-book-author">F. Scott
+                                Fitzgerald</p>
+                        </div>
+                        <div class="kb-wl-card-footer">
+                            <p class="kb-wl-price">120.000 đ</p>
+                            <div class="kb-wl-card-actions">
+                                <button class="kb-wl-add-cart-btn">Add
+                                    to Cart</button>
+                                <button class="kb-wl-remove-btn"
+                                        title="Remove item">
+                                            <span class="material-symbols-outlined">close</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

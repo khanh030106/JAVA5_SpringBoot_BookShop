@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/manager/categories_management.css">
+    </th:block>
+</head>
+<body>
+<main class="kb-cm-main">
+    <!-- Top Bar / Header Area -->
+    <header class="kb-cm-header">
+        <!-- Page Heading -->
+        <div class="kb-cm-page-heading">
+            <h2 class="kb-cm-page-title">Category Management</h2>
+            <p class="kb-cm-page-description">Manage your book categories and genres efficiently.</p>
+        </div>
+        <!-- Actions Toolbar -->
+        <div class="kb-cm-toolbar">
+            <!-- Add Button -->
+            <button class="kb-cm-add-button">
+                <span class="material-symbols-outlined kb-cm-add-icon">add</span>
+                <span class="kb-cm-add-text">Add New Category</span>
+            </button>
+        </div>
+    </header>
+    <!-- Scrollable Content Area -->
+    <div class="kb-cm-content">
+        <!-- Table Card -->
+        <div class="kb-cm-table-card">
+            <div class="kb-cm-table-wrapper">
+                <table class="kb-cm-table">
+                    <thead class="kb-cm-table-head">
+                    <tr>
+                        <th class="kb-cm-th">Category Name</th>
+                        <th class="kb-cm-th kb-cm-th-total">Total Books</th>
+                        <th class="kb-cm-th kb-cm-th-status">Status</th>
+                        <th class="kb-cm-th kb-cm-th-actions">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="kb-cm-table-body">
+                    <!-- Row 1 -->
+                    <tr class="kb-cm-table-row">
+                        <td class="kb-cm-td">
+                            <div class="kb-cm-category-cell">
+                                <div class="kb-cm-category-icon kb-cm-icon-orange">
+                                    <span class="material-symbols-outlined">auto_stories</span>
+                                </div>
+                                <div>
+                                    <p class="kb-cm-category-name">Fiction</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="kb-cm-td kb-cm-total">1,240</td>
+                        <td class="kb-cm-td">
+                            <span class="kb-cm-badge kb-cm-badge-active">Active</span>
+                        </td>
+                        <td class="kb-cm-td kb-cm-actions-cell">
+                            <div class="kb-cm-actions">
+                                <button class="kb-cm-action-btn kb-cm-edit-btn" title="Edit">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">edit</span>
+                                </button>
+                                <button class="kb-cm-action-btn kb-cm-delete-btn" title="Delete">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr class="kb-cm-table-row">
+                        <td class="kb-cm-td">
+                            <div class="kb-cm-category-cell">
+                                <div class="kb-cm-category-icon kb-cm-icon-blue">
+                                    <span class="material-symbols-outlined">science</span>
+                                </div>
+                                <div>
+                                    <p class="kb-cm-category-name">Science</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="kb-cm-td kb-cm-total">850</td>
+                        <td class="kb-cm-td">
+                            <span class="kb-cm-badge kb-cm-badge-active">Active</span>
+                        </td>
+                        <td class="kb-cm-td kb-cm-actions-cell">
+                            <div class="kb-cm-actions">
+                                <button class="kb-cm-action-btn kb-cm-edit-btn" title="Edit">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">edit</span>
+                                </button>
+                                <button class="kb-cm-action-btn kb-cm-delete-btn" title="Delete">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr class="kb-cm-table-row">
+                        <td class="kb-cm-td">
+                            <div class="kb-cm-category-cell">
+                                <div class="kb-cm-category-icon kb-cm-icon-pink">
+                                    <span class="material-symbols-outlined">favorite</span>
+                                </div>
+                                <div>
+                                    <p class="kb-cm-category-name">Romance</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="kb-cm-td kb-cm-total">2,100</td>
+                        <td class="kb-cm-td">
+                            <span class="kb-cm-badge kb-cm-badge-inactive">Inactive</span>
+                        </td>
+                        <td class="kb-cm-td kb-cm-actions-cell">
+                            <div class="kb-cm-actions">
+                                <button class="kb-cm-action-btn kb-cm-edit-btn" title="Edit">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">edit</span>
+                                </button>
+                                <button class="kb-cm-action-btn kb-cm-delete-btn" title="Delete">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 4 -->
+                    <tr class="kb-cm-table-row">
+                        <td class="kb-cm-td">
+                            <div class="kb-cm-category-cell">
+                                <div class="kb-cm-category-icon kb-cm-icon-amber">
+                                    <span class="material-symbols-outlined">history_edu</span>
+                                </div>
+                                <div>
+                                    <p class="kb-cm-category-name">History</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="kb-cm-td kb-cm-total">430</td>
+                        <td class="kb-cm-td">
+                            <span class="kb-cm-badge kb-cm-badge-active">Active</span>
+                        </td>
+                        <td class="kb-cm-td kb-cm-actions-cell">
+                            <div class="kb-cm-actions">
+                                <button class="kb-cm-action-btn kb-cm-edit-btn" title="Edit">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">edit</span>
+                                </button>
+                                <button class="kb-cm-action-btn kb-cm-delete-btn" title="Delete">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Row 5 -->
+                    <tr class="kb-cm-table-row">
+                        <td class="kb-cm-td">
+                            <div class="kb-cm-category-cell">
+                                <div class="kb-cm-category-icon kb-cm-icon-purple">
+                                    <span class="material-symbols-outlined">psychology</span>
+                                </div>
+                                <div>
+                                    <p class="kb-cm-category-name">Philosophy</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="kb-cm-td kb-cm-total">150</td>
+                        <td class="kb-cm-td">
+                            <span class="kb-cm-badge kb-cm-badge-active">Active</span>
+                        </td>
+                        <td class="kb-cm-td kb-cm-actions-cell">
+                            <div class="kb-cm-actions">
+                                <button class="kb-cm-action-btn kb-cm-edit-btn" title="Edit">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">edit</span>
+                                </button>
+                                <button class="kb-cm-action-btn kb-cm-delete-btn" title="Delete">
+                                    <span class="material-symbols-outlined kb-cm-action-icon">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="kb-cm-pagination">
+                <p class="kb-cm-pagination-info">Showing <span class="kb-cm-pagination-bold">1</span> to <span class="kb-cm-pagination-bold">5</span> of <span class="kb-cm-pagination-bold">12</span> results</p>
+                <div class="kb-cm-pagination-buttons">
+                    <button class="kb-cm-pagination-btn" disabled>Previous</button>
+                    <button class="kb-cm-pagination-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

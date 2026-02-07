@@ -100,7 +100,7 @@ public class Book {
     @OneToMany(mappedBy = "bookID")
     private Set<Review> reviews = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "bookID")
+    @OneToMany(mappedBy = "book")
     private Set<Wishlist> wishlists = new LinkedHashSet<>();
 
     @Transient

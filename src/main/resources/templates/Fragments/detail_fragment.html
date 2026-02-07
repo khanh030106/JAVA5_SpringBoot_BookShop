@@ -17,7 +17,7 @@
             <div class="book-images">
                 <div class="card sticky-top">
                     <div class="image-main">
-                        <img alt="Bìa sách Đắc Nhân Tâm" th:src="@{|/images/book_images/${detail_book.mainImage.imageURL}|}"/>
+                        <img alt="Bìa sách Đắc Nhân Tâm" th:src="@{|/images/book_images/${detail_book.mainImage.imageURL != null ? detail_book.mainImage.imageURL : 'default_book_image.jpg'}|}"/>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active">
@@ -87,24 +87,21 @@
 
                 <div class="features-grid">
                     <div class="feature-card">
-                            <span
-                                    class="material-icons feature-icon blue">local_shipping</span>
+                            <span class="material-icons feature-icon blue">local_shipping</span>
                         <div class="feature-text">
                             <p class="feature-title">Giao hàng nhanh</p>
                             <p class="feature-desc">Nội thành trong 24h</p>
                         </div>
                     </div>
                     <div class="feature-card">
-                            <span
-                                    class="material-icons feature-icon green">verified_user</span>
+                            <span class="material-icons feature-icon green">verified_user</span>
                         <div class="feature-text">
                             <p class="feature-title">Chính hãng 100%</p>
                             <p class="feature-desc">Đền tiền nếu giả</p>
                         </div>
                     </div>
                     <div class="feature-card">
-                            <span
-                                    class="material-icons feature-icon purple">assignment_return</span>
+                            <span class="material-icons feature-icon purple">assignment_return</span>
                         <div class="feature-text">
                             <p class="feature-title">Đổi trả 30 ngày</p>
                             <p class="feature-desc">Thủ tục đơn giản</p>

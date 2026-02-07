@@ -1,6 +1,9 @@
 package assignment.java5.ass_self.Entities;
 
+import assignment.java5.ass_self.enums.AuthProvider;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -24,7 +27,8 @@ public class User {
     private Long id;
 
     @Size(max = 50)
-    @NotNull
+    @NotNull()
+    @NotBlank(message = "Tên không được để trống")
     @Column(name = "FullName", nullable = false, length = 50)
     private String fullName;
 
@@ -62,11 +66,15 @@ public class User {
     @Column(name = "IsDeleted")
     private Boolean isDeleted;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Provider", length = 20, nullable = false)
+    private AuthProvider provider;
+
     @Column(name = "CreatedAt", insertable = false, updatable = false)
     private Instant createdAt;
 
 
-    @OneToMany(mappedBy = "userID")
+    @OneToMany(mappedBy = "userID", fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "userID")
@@ -87,7 +95,7 @@ public class User {
     @OneToMany(mappedBy = "userID")
     private Set<VoucherUsage> voucherUsages = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "userID")
+    @OneToMany(mappedBy = "user")
     private Set<Wishlist> wishlists = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "userID")

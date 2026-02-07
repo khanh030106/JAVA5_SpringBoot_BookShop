@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: view(~{::title}, ~{::main}, ~{::styles})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="styles">
+        <link rel="stylesheet" href="/css/manager/revenue_analytics.css">
+    </th:block>
+</head>
+<body>
+<main>
+    <div class="container">
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="header-section">
+                    <div class="header-title-group">
+                        <h1>Revenue Analytics</h1>
+                        <p class="subtitle">Track your sales performance and growth metrics.</p>
+                    </div>
+                    <div class="header-actions">
+                        <div class="date-picker">
+                            <label class="date-option">
+                                <input type="radio" name="date-range" class="date-radio">
+                                <span class="date-label">Today</span>
+                            </label>
+                            <label class="date-option">
+                                <input type="radio" name="date-range" class="date-radio">
+                                <span class="date-label">Last 7 Days</span>
+                            </label>
+                            <label class="date-option">
+                                <input type="radio" name="date-range" class="date-radio" checked>
+                                <span class="date-label">This Month</span>
+                            </label>
+                        </div>
+                        <button class="export-btn">
+                            <span class="material-symbols-outlined">download</span>
+                            <span>Export Report</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon">
+                                <span class="material-symbols-outlined">payments</span>
+                            </div>
+                            <span class="kpi-badge badge-up">
+                                <span class="material-symbols-outlined" style="font-size: 0.875rem;">trending_up</span>
+                                12.5%
+                            </span>
+                        </div>
+                        <p class="kpi-title">Total Revenue</p>
+                        <h3 class="kpi-value">$124,592.00</h3>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                            </div>
+                            <span class="kpi-badge badge-down">
+                                <span class="material-symbols-outlined" style="font-size: 0.875rem;">trending_down</span>
+                                2.1%
+                            </span>
+                        </div>
+                        <p class="kpi-title">Average Order Value</p>
+                        <h3 class="kpi-value">$45.20</h3>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon">
+                                <span class="material-symbols-outlined">monitoring</span>
+                            </div>
+                            <span class="kpi-badge badge-up">
+                                <span class="material-symbols-outlined" style="font-size: 0.875rem;">trending_up</span>
+                                4.3%
+                            </span>
+                        </div>
+                        <p class="kpi-title">Growth Rate</p>
+                        <h3 class="kpi-value">18.4%</h3>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title-group">
+                            <h2>Monthly Revenue</h2>
+                            <p>Revenue overview for Jan - Dec 2023</p>
+                        </div>
+                        <div class="chart-controls">
+                            <button class="chart-btn">
+                                <span class="material-symbols-outlined">bar_chart</span>
+                            </button>
+                            <button class="chart-btn active">
+                                <span class="material-symbols-outlined">show_chart</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-y-axis">
+                            <div class="y-axis-line">
+                                <span class="y-axis-label">$50k</span>
+                            </div>
+                            <div class="y-axis-line">
+                                <span class="y-axis-label">$40k</span>
+                            </div>
+                            <div class="y-axis-line">
+                                <span class="y-axis-label">$30k</span>
+                            </div>
+                            <div class="y-axis-line">
+                                <span class="y-axis-label">$20k</span>
+                            </div>
+                            <div class="y-axis-line">
+                                <span class="y-axis-label">$10k</span>
+                            </div>
+                            <div class="y-axis-line" style="border-bottom: 1px solid #cbd5e1;">
+                                <span class="y-axis-label">$0</span>
+                            </div>
+                        </div>
+                        <svg class="chart-svg" viewBox="0 0 1200 250" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#ec4913" stop-opacity="0.2"></stop>
+                                    <stop offset="100%" stop-color="#ec4913" stop-opacity="0"></stop>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0 180 C 100 180, 150 100, 200 100 S 300 200, 400 150 S 500 50, 600 50 S 700 120, 800 120 S 900 80, 1000 30 S 1100 100, 1200 80 V 250 H 0 Z" fill="url(#chartGradient)"></path>
+                            <path d="M0 180 C 100 180, 150 100, 200 100 S 300 200, 400 150 S 500 50, 600 50 S 700 120, 800 120 S 900 80, 1000 30 S 1100 100, 1200 80" fill="none" stroke="#ec4913" stroke-width="3" stroke-linecap="round"></path>
+                            <circle cx="600" cy="50" r="6" fill="#ec4913" stroke="white" stroke-width="2"></circle>
+                            <g transform="translate(560, 0)">
+                                <rect x="0" y="0" width="80" height="36" rx="6" fill="#221510"></rect>
+                                <text x="40" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="white">June</text>
+                                <text x="40" y="28" text-anchor="middle" font-size="12" font-weight="bold" fill="white">$48,200</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="x-axis-labels">
+                        <span>Jan</span>
+                        <span>Feb</span>
+                        <span>Mar</span>
+                        <span>Apr</span>
+                        <span>May</span>
+                        <span class="active">Jun</span>
+                        <span>Jul</span>
+                        <span>Aug</span>
+                        <span>Sep</span>
+                        <span>Oct</span>
+                        <span>Nov</span>
+                        <span>Dec</span>
+                    </div>
+                </div>
+
+                <div class="secondary-grid">
+                    <div class="category-card">
+                        <h3 class="category-title">Top Performing Categories</h3>
+                        <div class="category-list">
+                            <div class="category-item">
+                                <div class="category-row">
+                                    <span class="category-name">Fiction</span>
+                                    <span class="category-value">$45,290</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-row">
+                                    <span class="category-name">Non-Fiction</span>
+                                    <span class="category-value">$28,100</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%; opacity: 0.7;"></div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-row">
+                                    <span class="category-name">Children's Books</span>
+                                    <span class="category-value">$15,420</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%; opacity: 0.4;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transactions-card">
+                        <div class="transactions-header">
+                            <h3 class="transactions-title">Recent Transactions</h3>
+                            <button class="view-all-btn">View All</button>
+                        </div>
+                        <div class="transactions-list">
+                            <div class="transaction-item">
+                                <div class="transaction-left">
+                                    <div class="transaction-icon icon-green">
+                                        <span class="material-symbols-outlined">shopping_bag</span>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <p>Order #2421</p>
+                                        <span>Today, 10:42 AM</span>
+                                    </div>
+                                </div>
+                                <span class="transaction-amount">+$124.00</span>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-left">
+                                    <div class="transaction-icon icon-green">
+                                        <span class="material-symbols-outlined">shopping_bag</span>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <p>Order #2420</p>
+                                        <span>Today, 9:15 AM</span>
+                                    </div>
+                                </div>
+                                <span class="transaction-amount">+$56.50</span>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-left">
+                                    <div class="transaction-icon icon-red">
+                                        <span class="material-symbols-outlined">keyboard_return</span>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <p>Refund #2418</p>
+                                        <span>Yesterday, 4:30 PM</span>
+                                    </div>
+                                </div>
+                                <span class="transaction-amount">-$32.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,8 +1,8 @@
 package assignment.java5.ass_self.Repository;
 
 import assignment.java5.ass_self.Entities.Book;
+import assignment.java5.ass_self.Entities.PromotionBook;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -29,7 +29,7 @@ WHERE b.isDeleted = false AND b.isActive = true
     LEFT JOIN bc.categoryID c
     LEFT JOIN b.bookAuthors ba
     LEFT JOIN ba.authorID a
-    WHERE (:category IS NULL OR c.categoryName = :category)
+    WHERE (:category IS NULL OR c.id = :category)
       AND (:author IS NULL OR a.authorName = :author)
       AND (:min IS NULL OR b.price >= :min)
       AND (:max IS NULL OR b.price <= :max)
@@ -38,7 +38,7 @@ WHERE b.isDeleted = false AND b.isActive = true
 """)
 
     Page<Book> filterBooks(
-            @Param("category") String category,
+            @Param("category") Long category,
             @Param("author") String author,
             @Param("min") BigDecimal min,
             @Param("max") BigDecimal max,
@@ -65,4 +65,18 @@ WHERE b.isDeleted = false AND b.isActive = true
     )
 """)
     Page<Book> findBookWithCate(@Param("id") Long id, Pageable pageable);
+
+    @Query("""
+    SELECT DISTINCT b FROM Book b
+    JOIN PromotionBook pb ON b.id = pb.id.bookID
+    JOIN pb.promotionID p
+    WHERE p.startDate <= CURRENT_TIMESTAMP AND p.endDate >= CURRENT_TIMESTAMP
+    AND b.isDeleted = false AND b.isActive = true
+    """)
+    Page<Book> findPromotionBooks(Pageable pageable);
+
+    @Query("""
+    SELECT b FROM Book b WHERE b.id = :id
+""")
+    public Book findBookById(@Param("id") Long id);
 }
